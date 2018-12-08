@@ -1,4 +1,10 @@
 $(document).ready(() => {
-    let body = $('body');
-    console.log("hello world");
+    DOMBuilder.buildDOM();
 });
+
+class DOMBuilder {
+    static buildDOM() {
+        let contact_section = $('body').find('#contact-section');
+        // contact_section.html("HELLO");
+    }
+}

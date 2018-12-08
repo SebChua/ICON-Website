@@ -1,4 +1,12 @@
 $(document).ready(function () {
-    var body = $('body');
-    console.log("hello world");
+    DOMBuilder.buildDOM();
 });
+var DOMBuilder = /** @class */ (function () {
+    function DOMBuilder() {
+    }
+    DOMBuilder.buildDOM = function () {
+        var contact_section = $('body').find('#contact-section');
+        // contact_section.html("HELLO");
+    };
+    return DOMBuilder;
+}());
