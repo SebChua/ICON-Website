@@ -1,3 +1,4 @@
-$(document).ready(() => {
-    let body = $('body');
+$(document).ready(function () {
+    var body = $('body');
+    console.log("hello world");
 });

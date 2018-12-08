@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons';
 
 const facebookBtn = (prop) => {
@@ -17,4 +19,4 @@ class ContactSection extends React.Component {
     }
 }
 
-ReactDOM.render(facebookBtn, document.querySelector('#contact-section'));
+ReactDOM.render(facebookBtn, document.getElementById('contact-section'));

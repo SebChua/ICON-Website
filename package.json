@@ -1,0 +1,22 @@
+{
+  "name": "iconwebsite",
+  "version": "1.0.0",
+  "description": "Website for ICON 2019",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebChua/ICON-Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SebChua/ICON-Website/issues"
+  },
+  "homepage": "https://github.com/SebChua/ICON-Website#readme",
+  "dependencies": {
+    "@types/jquery": "^3.3.22"
+  }
+}
