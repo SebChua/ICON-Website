@@ -8,7 +8,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="../bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="../styles/index.css" />
+        <link rel="stylesheet" type="text/css" href="../styles/animate.css">
+        <link rel="stylesheet" type="text/css" href="../styles/index.css">
 	</head>
 
 	<body>
@@ -20,12 +21,27 @@
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="navbar-nav mr-auto mx-5">
-              <a class="mx-4 nav-link nav-item active" href="#">HOME <span class="sr-only">(current)</span></a>
-              <a class="mx-4 nav-link nav-item" href="#">ABOUT</a>
-              <a class="mx-4 nav-link nav-item" href="#">SPEAKERS</a>
-              <a class="mx-4 nav-link nav-item" href="#">CONTACT US</a>
-          </div>
+          <ul class="navbar-nav mr-auto mx-5">
+            <li class="nav-item active">
+              <a class="mx-4 nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="mx-4 nav-link" href="#">ABOUT</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="mx-4 nav-link" href="#">SPEAKERS</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="mx-4 nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#">PAST EVENTS</a>
+              <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="http://ppia-unsw.org/icon2017.html">ICON 2017</a>
+                  <a class="dropdown-item" href="http://ppia-unsw.org/icon2018.html">ICON 2018</a>
+              </div>
+            </li>
+          </ul>
           <form class="form-inline my-2 my-lg-0">
             <button class="btn btn-outline-success my-2 my-sm-0" type="button">BUY TICKETS</button>
           </form>
@@ -37,30 +53,110 @@
       <img class="img-fluid" src="../assets/ICON2018Cover.jpg" alt="theme-image">
     </div>
 
-    <div id="contact-section"></div>
+    <!-- About ICON -->
+    <div id="about-section" class="container-fluid">
+      <h1>About ICON</h1>
+    </div>
 
+    <!-- Meet the Team-->
+    <div id="meet-the-team" class="container-fluid">
+      <h1 class="text-center">Meet the Team</h1>
+      <!-- Division List -->
+      <div id="teams-row">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a id="exec-link" class="nav-link team-link" href="#">Executive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link team-link" href="#">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link team-link" href="#">Marketing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link team-link" href="#">Design</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link team-link" href="#">Liaison Officers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link team-link" href="#">Sponsorship</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link team-link" href="#">Logistics</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Committee Photos Roles -->
+      <div id="team-photo-section" class="text-center container-fluid">
+        <!-- Populate with Javascript-->
+        <div class="d-flex flex-wrap justify-content-center">
+          <div class="profile">
+            <img src="../assets/team-photos/executive/photo.jpg">
+            <h4>Sebastian Chua</h4>
+            <h6>Project Manager</h6>
+          </div>
+          <div class="profile">
+            <img src="../assets/team-photos/executive/photo.jpg">
+          </div>
+          <div class="profile">
+            <img src="../assets/team-photos/executive/photo.jpg">
+          </div>
+          <div class="profile">
+            <img src="../assets/team-photos/executive/photo.jpg">
+          </div>
+          <div class="profile">
+            <img src="../assets/team-photos/executive/photo.jpg">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Contact Us -->
+    <div id="contact-section" class="container-fluid">
+      <h1>Contact Us</h1>
+    </div>
+
+    <div id="see-you-section" class="container-fluid text-center">
+      <h1>Ready to Leave Your Mark?</h1>
+      <h2>Ready to Leave Your Mark?</h2>
+      <h3 style="color: grey; font-weight: 400;">Ready to Leave Your Mark?</h3>
+      <a href="#" class="btn btn-primary">GET TICKETS</a>
+    </div>
+    
+    <footer id="main-footer" class="footer fixed-bottom">
+        <div class="row">
+            <div class="col-7" id="ppia-text">
+              Presented with <i class="fas fa-heart"></i> by PPIA UNSW
+            </div>
+            <div class="col-5">
+              <ul class="nav justify-content-end mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" target="_blank" href="https://www.facebook.com/PPIA.ICON2018/"><i class="fab fa-facebook-f fa-lg"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" target="_blank" href="https://www.instagram.com/icon_2019/"><i class="fab fa-instagram fa-lg"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="mailto:unsw.ppia@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
+                </li>
+              </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    
     <!-- Custom Scripts -->
     <script type="text/javascript" src="../scripts/script.js"></script>
-    <script type="text/babel" src="../scripts/ContactSection.js"></script>
-
-    <footer class="footer">
-      <!-- Social Button Row -->
-      <div id="social-button-row">
-          <ul class="nav justify-content-center">
-              <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://www.facebook.com/PPIA.ICON2018/"><i class="fab fa-facebook-f fa-2x"></i></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://www.instagram.com/icon_2019/"><i class="fab fa-instagram fa-2x"></i></a>
-              </li>
-            </ul>
-      </div>
-
-      <!-- Copyright -->
-      <div class="text-center py-3">
-        Brought with <i class="fas fa-heart"></i> by PPIA UNSW
-      </div>
-      <!-- Copyright -->
-    </footer>
+    <!-- Imports the list of all committee members for PhotoList.js -->
+    <script src="../scripts/Members.js"></script>
+    <script src="../scripts/PhotoList.js"></script>
 	</body>
 </html>

@@ -1,31 +1,152 @@
+$underline_color: #000;
+$duration: .2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+%section {
+    padding: 40px 40px 40px 40px;
+}
+
 #main-nav {
-    padding: 25px 80px 25px 80px;
-    font-size: 20px;
+    padding: 15px 60px 15px 60px;
+    font-size: 17px;
     font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.3);
     z-index: 100;
+    background-color: rgba(0, 0, 0, 0.15);
+    transition: background-color 0.5s ease 0s;
+
+    .dropdown-menu {
+        background-color: rgba(0, 0, 0, 0.15);
+
+    }
+
+    .dropdown-item {
+        color: white;
+
+        &:hover {
+            background-color: rgba(44, 43, 43, 0.4);
+        }
+    }
+    
+    a {
+        margin-right: 5px;
+    }
 
     #logo {
         max-width: 100px;
         max-height: 100px;
     }
+
 }
 
-#social-button-row {
-    padding-top: 20px;
+#about-section {
+    @extend %section;
+    height: 300px;
+    background-color: rgb(226, 224, 224); 
 }
 
-.filler {
-    height: 1000px;
-    background-color: red;
+#meet-the-team {
+    @extend %section;
+    padding: 30px 0px 30px 0px;
+
+    #team-photo-section {
+        padding: 15px 0px 20px 0px;
+
+        .profile {
+            img {
+                max-width: 180px;
+                max-height: 180px;
+                margin-top: 15px;
+            }
+
+            h4 {
+                font-size: 24px;
+                margin-top: 15px;
+            }
+
+            h6 {
+                color: grey;
+            }
+            margin-right: 40px;
+        }
+    }
+
+    // Allows for Animation of Link on Hover
+    // Referenced from https://codepen.io/devilishalchemist/pen/ZYLZay?editors=1100
+    a {
+        position: relative;
+        text-decoration: none;
+        padding-bottom: 8px;
+        margin-right: 10px;
+        margin-left: 10px;
+
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0; right: 0;
+            height: 2px;
+            background-color: $underline_color;
+        }
+        &:before {
+            opacity: 0;
+            transform: translateY(- $distance);
+            transition: transform 0s $easeOutBack, opacity 0s;
+        }
+        &:after {
+            opacity: 0;
+            transform: translateY($distance/2);
+            transition: transform $duration $easeOutBack, opacity $duration;
+        }
+        &:hover, &:focus {
+            &:before, &:after {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            &:before {
+                transition: transform $duration $easeOutBack, opacity $duration;
+            }
+            &:after {
+                transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+            }
+        }
+    }
 }
 
-.footer {
-    background-color: black;
+#contact-section {
+    @extend %section;
+    height: 300px;
+    background-color: rgb(226, 224, 224); 
+}
+
+#see-you-section {
+    @extend %section;
+    height: 350px;
+
+    .btn {
+        margin-top: 30px;
+    }
+}
+
+#main-footer {
+    background-color: rgba(0, 0, 0, 0.3);
     color: white;
+    font-size: 18px;
+    padding: 0px 30px 0px 30px;
+    animation-duration: 0.5s;
 
-    .nav-link {
-        color: white;
+    #ppia-text {
+        padding: 3vh;
+    }
+    
+    .nav {
+        padding: 2vh 0 2vh 0;
+
+        .nav-link {
+            color: white;
+            font-size: 20px;
+            margin-right: 20px;
+        }
 
         :hover {
             color: grey;

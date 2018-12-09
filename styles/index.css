@@ -1,32 +1,126 @@
+#see-you-section, #contact-section, #meet-the-team, #about-section {
+  padding: 40px 40px 40px 40px;
+}
+
 #main-nav {
-  padding: 25px 80px 25px 80px;
-  font-size: 20px;
+  padding: 15px 60px 15px 60px;
+  font-size: 17px;
   font-weight: 600;
-  background-color: rgba(0, 0, 0, 0.3);
   z-index: 100;
+  background-color: rgba(0, 0, 0, 0.15);
+  transition: background-color 0.5s ease 0s;
+}
+#main-nav .dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+#main-nav .dropdown-item {
+  color: white;
+}
+#main-nav .dropdown-item:hover {
+  background-color: rgba(44, 43, 43, 0.4);
+}
+#main-nav a {
+  margin-right: 5px;
 }
 #main-nav #logo {
   max-width: 100px;
   max-height: 100px;
 }
 
-#social-button-row {
-  padding-top: 20px;
+#about-section {
+  height: 300px;
+  background-color: #e2e0e0;
 }
 
-.filler {
-  height: 1000px;
-  background-color: red;
+#meet-the-team {
+  padding: 30px 0px 30px 0px;
+}
+#meet-the-team #team-photo-section {
+  padding: 15px 0px 20px 0px;
+}
+#meet-the-team #team-photo-section .profile {
+  margin-right: 40px;
+}
+#meet-the-team #team-photo-section .profile img {
+  max-width: 180px;
+  max-height: 180px;
+  margin-top: 15px;
+}
+#meet-the-team #team-photo-section .profile h4 {
+  font-size: 24px;
+  margin-top: 15px;
+}
+#meet-the-team #team-photo-section .profile h6 {
+  color: grey;
+}
+#meet-the-team a {
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 8px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+#meet-the-team a:before, #meet-the-team a:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #000;
+}
+#meet-the-team a:before {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
+}
+#meet-the-team a:after {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+#meet-the-team a:hover:before, #meet-the-team a:hover:after, #meet-the-team a:focus:before, #meet-the-team a:focus:after {
+  opacity: 1;
+  transform: translateY(0);
+}
+#meet-the-team a:hover:before, #meet-the-team a:focus:before {
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+#meet-the-team a:hover:after, #meet-the-team a:focus:after {
+  transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
 }
 
-.footer {
-  background-color: black;
-  color: white;
+#contact-section {
+  height: 300px;
+  background-color: #e2e0e0;
 }
-.footer .nav-link {
-  color: white;
+
+#see-you-section {
+  height: 350px;
 }
-.footer .nav-link :hover {
+#see-you-section .btn {
+  margin-top: 30px;
+}
+
+#main-footer {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 18px;
+  padding: 0px 30px 0px 30px;
+  animation-duration: 0.5s;
+}
+#main-footer #ppia-text {
+  padding: 3vh;
+}
+#main-footer .nav {
+  padding: 2vh 0 2vh 0;
+}
+#main-footer .nav .nav-link {
+  color: white;
+  font-size: 20px;
+  margin-right: 20px;
+}
+#main-footer .nav :hover {
   color: grey;
 }
 
