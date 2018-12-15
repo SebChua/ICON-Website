@@ -1,6 +1,15 @@
 $(document).ready(function () {
     DOMBuilder.buildDOM();
     applyScrollEffects($('#theme-section').height());
+    $('#teams-row a').on('click', function (event) {
+        console.log(event.target.textContent);
+        $('#team-photo-section').addClass('animated fadeOutLeft');
+        // Refer to PhotoList.js for implementation
+        var container = document.getElementById('team-photo-section');
+        ReactDOM.render(e(PhotoRow, { team: team, division: event.target.textContent }, null), container);
+        $('#team-photo-section').removeClass('animated fadeOutLeft');
+        $('#team-photo-section').addClass('animated fadeInRight');
+    });
 });
 var DOMBuilder = /** @class */ (function () {
     function DOMBuilder() {

@@ -9,7 +9,9 @@ class ProfilePhoto extends React.Component {
 
     getProfilePicURL(division, firstName, lastName){
         let name = firstName + '-' + lastName;
-        return '../assets/team-photos/' + division + '/' + name + '.jpg';
+        let division_url = division.replace(/\s/g, '');
+        
+        return '../assets/team-photos/' + division_url + '/' + name + '.jpg';
     }
 
     makeProfilePhoto(member){
@@ -50,4 +52,4 @@ class PhotoRow extends React.Component {
 }
 
 const container = document.getElementById('team-photo-section');
-ReactDOM.render(e(PhotoRow, { team: team, division: 'executive' }, null), container);
+ReactDOM.render(e(PhotoRow, { team: team, division: 'Executive' }, null), container);

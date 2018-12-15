@@ -1,5 +1,5 @@
 var team = {
-    "executive": [
+    "Executive": [
         {
             "firstName": "Sebastian",
             "lastName": "Chua",
@@ -29,7 +29,7 @@ var team = {
             "key": "audreypatricia"
         }
     ],
-    "events": [
+    "Events": [
         {
             "firstName": "Verren",
             "lastName": "Jesilia",
@@ -59,7 +59,7 @@ var team = {
             "key": "ivanawidjaja"
         }
     ],
-    "marketing": [
+    "Marketing": [
         {
             "firstName": "Glen",
             "lastName": "Odang",
@@ -89,7 +89,7 @@ var team = {
             "key": "glennkadarusman"
         }
     ],
-    "design": [
+    "Design": [
         {
             "firstName": "Shannen",
             "lastName": "Patricia",
@@ -119,7 +119,7 @@ var team = {
             "key": "nicolesamudera"
         }
     ],
-    "liaison-officer": [
+    "Liaison Officers": [
         {
             "firstName": "Calista",
             "lastName": "Amarati",
@@ -156,7 +156,7 @@ var team = {
             "key": "shafirakurniadewi"
         }
     ],
-    "sponsorship": [
+    "Sponsorship": [
         {
             "firstName": "Cornelia",
             "lastName": "Michelle",
@@ -186,7 +186,7 @@ var team = {
             "key": "karendevanie"
         }
     ],
-    "logistics": [
+    "Logistics": [
         {
             "firstName": "Marchia",
             "lastName": "Devana",
@@ -203,7 +203,7 @@ var team = {
         },
         {
             "firstName": "Sharon",
-            "lastName": "Giovani",
+            "lastName": "Giovanni",
             "division": "Logistics",
             "role": "Committee",
             "key": "sharongiovani"
