@@ -1,0 +1,9 @@
+{
+    "vim.handleKeys": {
+        "<D-c>": false,
+        "<D-a>": false,
+        "<D-x>": false,
+        "<D-s>": false,
+        "<D-v>": false
+    }
+}

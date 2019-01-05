@@ -27,7 +27,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="mx-4 nav-link" href="#">ABOUT</a>
+              <a class="mx-4 nav-link" href="#about-section">ABOUT</a>
             </li>
 
             <li class="nav-item">
@@ -37,8 +37,8 @@
             <li class="nav-item dropdown">
               <a class="mx-4 nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#">PAST EVENTS</a>
               <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="http://ppia-unsw.org/icon2017.html">ICON 2017</a>
-                  <a class="dropdown-item" href="http://ppia-unsw.org/icon2018.html">ICON 2018</a>
+                  <a class="dropdown-item" target='_blank' href="http://ppia-unsw.org/icon2017.html">ICON 2017</a>
+                  <a class="dropdown-item" target='_blank' href="http://ppia-unsw.org/icon2018.html">ICON 2018</a>
               </div>
             </li>
           </ul>
@@ -54,18 +54,77 @@
     </div>
 
     <!-- About ICON -->
+    <!-- <div id="about-section" class="container-fluid text-center">
+      <div class='event-details column'>
+        <h1>Event Details</h1>
+        <h4>John Clancy Auditorium, UNSW</h4>
+        <h5>Sydney, Australia</h5>
+        <h6>July 6th, 2019</h6>
+        <a href="https://www.facebook.com/PPIA.ICON2018/" target='_blank' class="btn btn-primary">Go To Event Page</a>
+      </div>
+      <div class='about-details column'>
+        <h1>About ICON</h1>
+        <p>
+          ICON is a platform for sharing IDEAS to INSPIRE the next generation of Indonesians to make an IMPACT. 
+          It is a conference where influential speakers come and spread ideas, catalyzing development and drive for 
+          the future generation of Indonesians.
+        </p>
+      </div>
+    </div> -->
+
     <div id="about-section" class="container-fluid">
-      <h1>About ICON</h1>
+      <div class='about-heading'>
+        <h1>About</h1>
+        <h1>ICON</h1>
+      </div>
+      <div class='about-details text-center'>
+        <p>
+          ICON is a platform for sharing IDEAS to INSPIRE the next generation of Indonesians to make an IMPACT. 
+          It is a conference where influential speakers come and spread ideas, catalyzing development and drive for 
+          the future generation of Indonesians.
+        </p>
+      </div>
     </div>
 
-    <!-- Meet the Team-->
+    <!-- Past Speakers -->
+    <div id='past-speakers' class="container-fluid text-center">
+      <h1>Our Past Speakers</h1>
+    </div>
+
+    <!-- Event Trailer -->
+    <div id='trailer' class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PyqV1YZ_gQ8" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Charity Section -->
+    <div id="charity-section" class="container-fluid">
+      <div class='charity-details text-center'>
+        <p>
+          Focusing on mentally-ill individuals, education for poverty-stricken individuals,
+          and marginalised groups, SEMESTA Foundation provides not only financial aid, but also 
+          training, infrastructure development, and management advocacy to aid these groups 
+          reclaim their livelihood.
+        </p>
+      </div>
+
+      <div class='charity-heading'>
+        <h1>Our</h1>
+        <h1>Charity</h1>
+      </div>
+    </div>
+
+    <div id="awards-section" class="container-fluid">
+      <h1>'Best Educational Event in Australia'</h1>
+    </div>
+
+    <!-- Meet the Team -->
     <div id="meet-the-team" class="container-fluid">
       <h1 class="text-center">Meet the Team</h1>
       <!-- Division List -->
       <div id="teams-row">
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a id="exec-link" class="nav-link team-link">Executive</a>
+            <a id="exec-link" class="nav-link team-link" href="javascript:;">Executive</a>
           </li>
           <li class="nav-item">
             <a class="nav-link team-link" href="javascript:;">Events</a>
@@ -89,9 +148,10 @@
       </div>
 
       <!-- Committee Photos Roles -->
-      <div id="team-photo-section" class="text-center container-fluid">
+  
+      <div id="team-photo-section" class="animated text-center container-fluid">
         <!-- Populate with Javascript-->
-        <div class="d-flex flex-wrap justify-content-center">
+        <!-- <div class="d-flex flex-wrap justify-content-center">
           <div class="profile">
             <img src="../assets/team-photos/executive/photo.jpg">
             <h4>Sebastian Chua</h4>
@@ -109,24 +169,20 @@
           <div class="profile">
             <img src="../assets/team-photos/executive/photo.jpg">
           </div>
-        </div>
+        </div> -->
       </div>
 
     </div>
 
-    <!-- Contact Us -->
-    <div id="contact-section" class="container-fluid">
-      <h1>Contact Us</h1>
-    </div>
-
     <div id="see-you-section" class="container-fluid text-center">
       <h1>Ready to Leave Your Mark?</h1>
-      <h2>Ready to Leave Your Mark?</h2>
-      <h3 style="color: grey; font-weight: 400;">Ready to Leave Your Mark?</h3>
+      <h4>John Clancy Auditorium, UNSW</h4>
+      <h5>Sydney, Australia</h5>
+      <h6 style="color: grey; font-weight: 400;">July 6th, 2019</h6>
       <a href="#" class="btn btn-primary">GET TICKETS</a>
     </div>
     
-    <footer id="main-footer" class="footer fixed-bottom">
+    <footer id="main-footer" class="footer">
         <div class="row">
             <div class="col-7" id="ppia-text">
               Presented with <i class="fas fa-heart"></i> by PPIA UNSW
@@ -150,12 +206,12 @@
 
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <!-- <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script> -->
     
     <!-- Imports the list of all committee members for PhotoList.js -->
-    <script src="../scripts/Members.js"></script>
-    <script src="../scripts/PhotoList.js"></script>
+    <!-- <script src="../scripts/Members.js"></script> -->
+    <!--<script src="../scripts/PhotoList.js"></script>-->
     
     <!-- Custom Scripts -->
     <script type="text/javascript" src="../scripts/script.js"></script>
