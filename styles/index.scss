@@ -4,7 +4,51 @@ $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
 %section {
-    padding: 40px 40px 40px 40px;
+    padding: 35px 40px 35px 40px;
+}
+
+%link-hover-effect {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    padding-bottom: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    &:focus {
+        color: white;
+    }
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0; right: 0;
+        height: 2px;
+        background-color: $underline_color;
+    }
+    &:before {
+        opacity: 0;
+        transform: translateY(- $distance);
+        transition: transform 0s $easeOutBack, opacity 0s;
+    }
+    &:after {
+        opacity: 0;
+        transform: translateY($distance/2);
+        transition: transform $duration $easeOutBack, opacity $duration;
+    }
+    &:hover, &:focus {
+        &:before, &:after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        &:before {
+            transition: transform $duration $easeOutBack, opacity $duration;
+        }
+        &:after {
+            transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+        }
+    }
 }
 
 html {
@@ -17,6 +61,7 @@ html {
     font-weight: 600;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.1);
+    height: 80px;
     transition: background-color 0.3s ease 0s;
 
     .dropdown-menu {
@@ -49,7 +94,7 @@ html {
 
 #theme-section {
     img {
-        max-height: 800px;
+        height: 90vh;
     }
 }
 
@@ -58,20 +103,23 @@ html {
     height: 300px;
     background-color: rgb(226, 224, 224);
     display: flex;
-
+    
     .about-heading {
+        text-align: right;
         width: 40%;
-        background-color: red;
+        // background-color: red;
+        padding: 10vh 60px;
+    }
+
+    .separator {
+        border-left: 6px solid black;
     }
 
     .about-details {
+        text-align: left;
         width: 60%;
-        background-color: green;
-        padding: 0 55px 0 55px;
-
-        p {
-            padding-top: 10px;
-        }
+        // background-color: green;
+        padding: 10vh 55px;
     }
 
     .column {
@@ -79,13 +127,59 @@ html {
     }
 }
 
-#past-speakers {
+#our-speakers {
     @extend %section;
+    padding: 35px 0 0 0;
     background-color: antiquewhite;
+
+    // Allows for Animation of Link on Hover
+    // Referenced from https://codepen.io/devilishalchemist/pen/ZYLZay?editors=1100
+    a {
+        @extend %link-hover-effect;
+    }
+
+    #speaker-content-row {
+        padding-top: 25px;
+
+        #speakers-column {
+            background-color: green;
+            display: flex;
+
+            .speaker-div {
+                flex: 16.67%;
+                height: 500px;
+            }
+
+            .speaker-img {
+                background-color: purple;
+            }
+
+            .speaker-img1 {
+                background-color: teal;
+            }
+
+            .speaker-img2 {
+                background-color: orange;
+            }
+
+            .speaker-img3 {
+                background-color: #e62954;
+            }
+
+            .speaker-img4 {
+                background-color: aquamarine;
+            }
+
+            .speaker-img5 {
+                background-color: greenyellow;
+            }
+        }
+    }
 }
 
 #trailer {
     @extend %section;
+    padding: 50px 60px;
     background-color: goldenrod;
 }
 
@@ -151,53 +245,10 @@ html {
         }
     }
 
-    // Allows for Animation of Link on Hover
-    // Referenced from https://codepen.io/devilishalchemist/pen/ZYLZay?editors=1100
     a {
-        position: relative;
-        text-decoration: none;
-        color: #000;
-        padding-bottom: 8px;
-        margin-right: 10px;
-        margin-left: 10px;
-
-        &:focus {
-            color: red;
-        }
-
-        &:before, &:after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0; right: 0;
-            height: 2px;
-            background-color: $underline_color;
-        }
-        &:before {
-            opacity: 0;
-            transform: translateY(- $distance);
-            transition: transform 0s $easeOutBack, opacity 0s;
-        }
-        &:after {
-            opacity: 0;
-            transform: translateY($distance/2);
-            transition: transform $duration $easeOutBack, opacity $duration;
-        }
-        &:hover, &:focus {
-            &:before, &:after {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            &:before {
-                transition: transform $duration $easeOutBack, opacity $duration;
-            }
-            &:after {
-                transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
-            }
-        }
+        @extend %link-hover-effect;
     }
 }
-
 
 #see-you-section {
     @extend %section;

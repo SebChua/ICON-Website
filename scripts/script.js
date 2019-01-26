@@ -1,4 +1,5 @@
-var team = {
+//#region Team Member Info JSON
+let team = {
     "Executive": [
         {
             "firstName": "Sebastian",
@@ -224,71 +225,130 @@ var team = {
         }
     ]
 };
-$(document).ready(function () {
-    $('#theme-section img').css('max-height', $(window).height());
-    applyScrollEffects($('#theme-section').height() - 600);
+//#endregion
+//#region Speaker Info JSON
+let speakers = {
+    "2017": [
+        {
+            "name": "Alamanda Shantika",
+            "title": "Founder & CEO",
+            "organisation": "Binar Academy"
+        },
+        {
+            "name": "Daniel Mananta",
+            "title": "Founder & CEO",
+            "organisation": "DAMN! I LOVE INDONESIA"
+        },
+        {
+            "name": "Andy F. Noya",
+            "title": "Host",
+            "organisation": "Kick Andy"
+        },
+        {
+            "name": "Noor Huda Ismail",
+            "title": "Founder",
+            "organisation": "Institute for International Peace Building Indonesia"
+        },
+        {
+            "name": "Isyana Syarasvati",
+            "title": "Performer",
+            "organisation": ""
+        }
+    ],
+    "2018": [
+        {
+            "name": "William Tanuwidjaja",
+            "title": "Co-Founder & CEO",
+            "organisation": "Tokopedia"
+        },
+        {
+            "name": "Chelsea Islan",
+            "title": "Actress",
+            "organisation": ""
+        },
+        {
+            "name": "Putra Nababan",
+            "title": "Ex-Editor In Chief",
+            "organisation": "Metro TV"
+        },
+        {
+            "name": "Faye Simanjuntak",
+            "title": "Founder",
+            "organisation": "Rumah Faye"
+        },
+        {
+            "name": "Arnold Poernomo",
+            "title": "Chef & Co-Founder",
+            "organisation": "Poernomo Brothers"
+        },
+        {
+            "name": "Jaz",
+            "title": "Performer",
+            "organisation": ""
+        }
+    ],
+    "2019": []
+};
+//#endregion
+$(document).ready(() => {
+    buildHeader();
+    buildThemeSection();
+    buildAboutSection();
     buildTeamPhotos('Executive');
-    $('#teams-row a').on('click', function () {
-        // $('#team-photo-section').removeClass('fadeInRight');
-        // $('#team-photo-section').addClass('fadeOutLeft');
+    $('#teams-row a').on('click', () => {
         $('#team-photo-section').html('');
-        var division = $('#teams-row').find('a:focus').text();
-        // console.log($('#teams-row').find('a:focus').text());
+        let division = $('#teams-row').find('a:focus').text();
         buildTeamPhotos(division);
     });
-    // $('#teams-row a').on('click', (event) => {
-    //     console.log(event.target.textContent);
-    //     // $('#team-photo-section').addClass('animated fadeOutLeft');
-    //     // Refer to PhotoList.js for implementation
-    //     const container = document.getElementById('team-photo-section');
-    //     // team is object containing all team information found in Members.js
-    //     // ReactDOM.render(e(PhotoRow, { team: team, division: event.target.textContent }, null), container);
-    //     ReactDOM.render(e(MeetTheTeam, {}, null), container);
-    //     console.log('hello');
-    //     // $('#team-photo-section').removeClass('animated fadeOutLeft');
-    //     // $('#team-photo-section').addClass('animated fadeInRight');
-    // });
 });
-// Scroll Effects on Navbar and Footer
-function applyScrollEffects(distanceFromTop) {
-    var _this = this;
-    $(window).scroll(function () {
-        if ($(_this).scrollTop() > distanceFromTop - $('#main-nav').height()) {
+function buildHeader() {
+    $('#theme-section img').css('max-height', $(window).height());
+    // Scroll Effects on Header Navigation
+    $(window).scroll(() => {
+        let distanceFromTop = $('#theme-section').height() - 600;
+        if ($(this).scrollTop() > distanceFromTop - $('#main-nav').height()) {
             $('#main-nav').css('background-color', 'rgba(0, 0, 0, 0.8)');
-            // $('#main-nav').removeClass('animated slideInDown');
-            // $('#main-nav').addClass('animated slideOutUp');
-            // $('#main-footer').removeClass('animated slideOutDown');
-            // $('#main-footer').addClass('animated slideInUp');
         }
         else {
             $('#main-nav').css('background-color', 'rgba(0, 0, 0, 0.10)');
-            //     $('#main-nav').removeClass('animated slideOutUp');
-            //     $('#main-nav').addClass('animated slideInDown');
-            //     $('#main-footer').removeClass('animated slideInUp');
-            //     $('#main-footer').addClass('animated slideOutDown');
         }
     });
 }
+function buildThemeSection() {
+    let theme_img = $('<img>').prop('src', '../assets/ICON2018Cover.jpg').prop('alt', 'theme-image');
+    theme_img.appendTo($('#theme-section'));
+}
+function buildAboutSection() {
+    let about_section = $('#about-section');
+    console.log('Hello wolrd');
+    console.log(about_section);
+    let about_heading = $('<div>').addClass('about-heading');
+    $('<h1>').text('About ICON').appendTo(about_heading);
+    let about_details = $('<div>').addClass('about-details');
+    let about_us_text = 'ICON is a platform for sharing IDEAS to INSPIRE the next generation of Indonesians to make an IMPACT. \
+    It is a non-profit conference where influential speakers come and spread ideas, catalyzing development \
+    and drive for the future generation of Indonesians.';
+    $('<p>').text(about_us_text).appendTo(about_details);
+    about_heading.appendTo(about_section);
+    $('<div>').addClass('separator').appendTo(about_section);
+    about_details.appendTo(about_section);
+}
 function buildTeamPhotos(division) {
-    var photoContainer = $('<div>').addClass('d-flex flex-wrap justify-content-center');
-    console.log(division);
-    console.log(team[division]);
-    for (var _i = 0, _a = team[division]; _i < _a.length; _i++) {
-        var member = _a[_i];
-        var profile = $('<div class="profile">');
+    let photoContainer = $('<div>').addClass('d-flex flex-wrap justify-content-center');
+    for (let member of team[division]) {
+        let profile = $('<div class="profile">');
         $('<img>').prop('src', buildImageURL(member)).appendTo(profile);
         $('<h4>').text(member.firstName + ' ' + member.lastName).appendTo(profile);
         $('<h6>').text(member.role).appendTo(profile);
         // Randomises the fade in animation time to create a twinkle star fade in effect
-        var delay = Math.random() * 0.5;
-        console.log(delay);
+        let delay = Math.random() * 0.5;
         profile.css('animation-delay', delay + 's');
         profile.addClass('animated fadeIn');
         profile.appendTo(photoContainer);
     }
     photoContainer.appendTo($('#team-photo-section'));
-    // photoContainer.addClass('animated fadeIn');
 }
+//#region Helper Functions
 function buildImageURL(member) {
     return '../assets/team-photos/' +
         normalise(member.division) +

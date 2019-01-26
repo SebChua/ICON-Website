@@ -1,5 +1,46 @@
-#see-you-section, #meet-the-team, #awards-section, #charity-section, #trailer, #past-speakers, #about-section {
-  padding: 40px 40px 40px 40px;
+#see-you-section, #meet-the-team, #awards-section, #charity-section, #trailer, #our-speakers, #about-section {
+  padding: 35px 40px 35px 40px;
+}
+
+#meet-the-team a, #our-speakers a {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  padding-bottom: 8px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+#meet-the-team a:focus, #our-speakers a:focus {
+  color: white;
+}
+#meet-the-team a:before, #our-speakers a:before, #meet-the-team a:after, #our-speakers a:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #000;
+}
+#meet-the-team a:before, #our-speakers a:before {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
+}
+#meet-the-team a:after, #our-speakers a:after {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+#meet-the-team a:hover:before, #our-speakers a:hover:before, #meet-the-team a:hover:after, #our-speakers a:hover:after, #meet-the-team a:focus:before, #our-speakers a:focus:before, #meet-the-team a:focus:after, #our-speakers a:focus:after {
+  opacity: 1;
+  transform: translateY(0);
+}
+#meet-the-team a:hover:before, #our-speakers a:hover:before, #meet-the-team a:focus:before, #our-speakers a:focus:before {
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+#meet-the-team a:hover:after, #our-speakers a:hover:after, #meet-the-team a:focus:after, #our-speakers a:focus:after {
+  transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
 }
 
 html {
@@ -12,6 +53,7 @@ html {
   font-weight: 600;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.1);
+  height: 80px;
   transition: background-color 0.3s ease 0s;
 }
 #main-nav .dropdown-menu {
@@ -35,7 +77,7 @@ html {
 }
 
 #theme-section img {
-  max-height: 800px;
+  height: 90vh;
 }
 
 #about-section {
@@ -44,26 +86,58 @@ html {
   display: flex;
 }
 #about-section .about-heading {
+  text-align: right;
   width: 40%;
-  background-color: red;
+  padding: 10vh 60px;
+}
+#about-section .separator {
+  border-left: 6px solid black;
 }
 #about-section .about-details {
+  text-align: left;
   width: 60%;
-  background-color: green;
-  padding: 0 55px 0 55px;
-}
-#about-section .about-details p {
-  padding-top: 10px;
+  padding: 10vh 55px;
 }
 #about-section .column {
   flex: 50%;
 }
 
-#past-speakers {
+#our-speakers {
+  padding: 35px 0 0 0;
   background-color: antiquewhite;
+}
+#our-speakers #speaker-content-row {
+  padding-top: 25px;
+}
+#our-speakers #speaker-content-row #speakers-column {
+  background-color: green;
+  display: flex;
+}
+#our-speakers #speaker-content-row #speakers-column .speaker-div {
+  flex: 16.67%;
+  height: 500px;
+}
+#our-speakers #speaker-content-row #speakers-column .speaker-img {
+  background-color: purple;
+}
+#our-speakers #speaker-content-row #speakers-column .speaker-img1 {
+  background-color: teal;
+}
+#our-speakers #speaker-content-row #speakers-column .speaker-img2 {
+  background-color: orange;
+}
+#our-speakers #speaker-content-row #speakers-column .speaker-img3 {
+  background-color: #e62954;
+}
+#our-speakers #speaker-content-row #speakers-column .speaker-img4 {
+  background-color: aquamarine;
+}
+#our-speakers #speaker-content-row #speakers-column .speaker-img5 {
+  background-color: greenyellow;
 }
 
 #trailer {
+  padding: 50px 60px;
   background-color: goldenrod;
 }
 
@@ -116,47 +190,6 @@ html {
 #meet-the-team #team-photo-section .profile h6 {
   color: grey;
 }
-#meet-the-team a {
-  position: relative;
-  text-decoration: none;
-  color: #000;
-  padding-bottom: 8px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-#meet-the-team a:focus {
-  color: red;
-}
-#meet-the-team a:before, #meet-the-team a:after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #000;
-}
-#meet-the-team a:before {
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
-}
-#meet-the-team a:after {
-  opacity: 0;
-  transform: translateY(4px);
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-}
-#meet-the-team a:hover:before, #meet-the-team a:hover:after, #meet-the-team a:focus:before, #meet-the-team a:focus:after {
-  opacity: 1;
-  transform: translateY(0);
-}
-#meet-the-team a:hover:before, #meet-the-team a:focus:before {
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-}
-#meet-the-team a:hover:after, #meet-the-team a:focus:after {
-  transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
-}
-
 #see-you-section {
   height: 400px;
   padding-top: 90px;
