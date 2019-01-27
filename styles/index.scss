@@ -51,6 +51,10 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     }
 }
 
+.separator {
+    border-left: 6px solid black;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -94,7 +98,77 @@ html {
 
 #theme-section {
     img {
-        height: 90vh;
+        height: 100vh;
+    }
+}
+
+#event-details {
+    @extend %section;
+    height: 45vh;
+    background-color: #031e63;
+    display: flex;
+
+    .event-social-column {
+        width: 40%;
+        line-height: 100px;
+
+        #social-column {
+            list-style: none;
+            text-align: right;
+            margin-right: 5vw;
+            font-size: 2em;
+
+            a {
+                text-decoration: none;
+                color: #e62954;
+                transition: 0.2s;
+            }
+
+            a:hover {
+                color: white;
+            }
+
+            .fa-facebook-f {
+                margin-right: 6px;
+            }
+
+            .fa-instagram {
+                margin-right: 3px;
+            }
+        }
+    }
+
+    .venue-time {
+        width: 60%;
+        margin-left: 5vw;
+        padding-top: 50px;
+        // background-color: red;
+
+        .date {
+            font-size: 3.5em;
+            color: #e62954;
+        }
+
+        .venue {
+            color: white;
+            font-weight: 800;
+        }
+
+        .place {
+            color: #c2bfbf;
+        }
+
+        .btn {
+            background-color: #e62954;
+            border: none;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+
+            &:hover {
+                background-color: #eb6282;
+            }
+        }
     }
 }
 
@@ -109,10 +183,6 @@ html {
         width: 40%;
         // background-color: red;
         padding: 10vh 60px;
-    }
-
-    .separator {
-        border-left: 6px solid black;
     }
 
     .about-details {

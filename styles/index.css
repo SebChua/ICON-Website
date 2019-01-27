@@ -1,4 +1,4 @@
-#see-you-section, #meet-the-team, #awards-section, #charity-section, #trailer, #our-speakers, #about-section {
+#see-you-section, #meet-the-team, #awards-section, #charity-section, #trailer, #our-speakers, #about-section, #event-details {
   padding: 35px 40px 35px 40px;
 }
 
@@ -43,6 +43,10 @@
   transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
 }
 
+.separator {
+  border-left: 6px solid black;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -77,7 +81,63 @@ html {
 }
 
 #theme-section img {
-  height: 90vh;
+  height: 100vh;
+}
+
+#event-details {
+  height: 45vh;
+  background-color: #031e63;
+  display: flex;
+}
+#event-details .event-social-column {
+  width: 40%;
+  line-height: 100px;
+}
+#event-details .event-social-column #social-column {
+  list-style: none;
+  text-align: right;
+  margin-right: 5vw;
+  font-size: 2em;
+}
+#event-details .event-social-column #social-column a {
+  text-decoration: none;
+  color: #e62954;
+  transition: 0.2s;
+}
+#event-details .event-social-column #social-column a:hover {
+  color: white;
+}
+#event-details .event-social-column #social-column .fa-facebook-f {
+  margin-right: 6px;
+}
+#event-details .event-social-column #social-column .fa-instagram {
+  margin-right: 3px;
+}
+#event-details .venue-time {
+  width: 60%;
+  margin-left: 5vw;
+  padding-top: 50px;
+}
+#event-details .venue-time .date {
+  font-size: 3.5em;
+  color: #e62954;
+}
+#event-details .venue-time .venue {
+  color: white;
+  font-weight: 800;
+}
+#event-details .venue-time .place {
+  color: #c2bfbf;
+}
+#event-details .venue-time .btn {
+  background-color: #e62954;
+  border: none;
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+#event-details .venue-time .btn:hover {
+  background-color: #eb6282;
 }
 
 #about-section {
@@ -89,9 +149,6 @@ html {
   text-align: right;
   width: 40%;
   padding: 10vh 60px;
-}
-#about-section .separator {
-  border-left: 6px solid black;
 }
 #about-section .about-details {
   text-align: left;

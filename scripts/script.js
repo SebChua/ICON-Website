@@ -293,6 +293,7 @@ let speakers = {
 $(document).ready(() => {
     buildHeader();
     buildThemeSection();
+    buildEventDetailsSection();
     buildAboutSection();
     buildTeamPhotos('Executive');
     $('#teams-row a').on('click', () => {
@@ -318,10 +319,43 @@ function buildThemeSection() {
     let theme_img = $('<img>').prop('src', '../assets/ICON2018Cover.jpg').prop('alt', 'theme-image');
     theme_img.appendTo($('#theme-section'));
 }
+function buildEventDetailsSection() {
+    let details_section = $('#event-details');
+    let social_col_div = $('<div>').addClass('event-social-column');
+    let social_col = $('<ul>').prop('id', 'social-column');
+    let media_buttons = {
+        'facebook': $('<a>').prop({
+            target: '_blank',
+            href: 'https://www.facebook.com/PPIA.ICON2018/'
+        }).addClass(['fab', 'fa-facebook-f', 'fa-lg']),
+        'instagram': $('<a>').prop({
+            target: '_blank',
+            href: 'https://www.instagram.com/icon_2019/'
+        }).addClass(['fab', 'fa-instagram', 'fa-lg']),
+        'email': $('<a>').prop({
+            href: 'mailto:unsw.ppia@gmail.com'
+        }).addClass(['fas', 'fa-envelope', 'fa-lg'])
+    };
+    $('<li>').append(media_buttons['facebook']).appendTo(social_col);
+    $('<li>').append(media_buttons['instagram']).appendTo(social_col);
+    $('<li>').append(media_buttons['email']).appendTo(social_col);
+    social_col.appendTo(social_col_div);
+    let event_details = $('<div>').addClass('venue-time');
+    let details = {
+        date: 'June 29, 2019',
+        venue: 'John Clancy Auditorium',
+        place: 'UNSW, Sydney'
+    };
+    $('<h1>').addClass('date').text(details.date).appendTo(event_details);
+    $('<h4>').addClass('venue').text(details.venue).appendTo(event_details);
+    $('<h5>').addClass('place').text(details.place).appendTo(event_details);
+    $('<a>').prop('href', '#').addClass(['btn', 'btn-primary']).text('Get Tickets').appendTo(event_details);
+    social_col_div.appendTo(details_section);
+    $('<div>').addClass('separator').css('border-color', 'grey').appendTo(details_section);
+    event_details.appendTo(details_section);
+}
 function buildAboutSection() {
     let about_section = $('#about-section');
-    console.log('Hello wolrd');
-    console.log(about_section);
     let about_heading = $('<div>').addClass('about-heading');
     $('<h1>').text('About ICON').appendTo(about_heading);
     let about_details = $('<div>').addClass('about-details');
