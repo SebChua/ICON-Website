@@ -91,7 +91,7 @@ html {
 }
 #event-details .event-social-column {
   width: 40%;
-  line-height: 100px;
+  line-height: 12vh;
 }
 #event-details .event-social-column #social-column {
   list-style: none;
@@ -116,7 +116,7 @@ html {
 #event-details .venue-time {
   width: 60%;
   margin-left: 5vw;
-  padding-top: 50px;
+  padding-top: 6vh;
 }
 #event-details .venue-time .date {
   font-size: 3.5em;
