@@ -1,4 +1,4 @@
-$underline_color: #000;
+$underline_color: white;
 $duration: .2s;
 $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
@@ -10,13 +10,13 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 %link-hover-effect {
     position: relative;
     text-decoration: none;
-    color: #000;
+    color: white;
     padding-bottom: 8px;
     margin-right: 10px;
     margin-left: 10px;
 
     &:focus {
-        color: white;
+        color: #e62954;
     }
 
     &:before, &:after {
@@ -52,11 +52,28 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 .separator {
-    border-left: 6px solid black;
+    border-left: 6px solid #031e63;
+}
+
+.btn {
+    background-color: #031e63;
+    border: none;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    &:hover {
+        background-color: white;
+        color: #031e63;
+    }
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+h1 {
+    font-size: 3em;
 }
 
 #main-nav {
@@ -97,15 +114,60 @@ html {
 }
 
 #theme-section {
-    img {
+    // Referenced from:
+    // https://medium.com/@PatrykZabielski/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    
+    .layer {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: fixed;
         height: 100vh;
+        width: 100%;
+        z-index: -1;
+    }
+    
+    .background-layer {
+        background-image: url('../assets/theme-layers/bg.png');
+    }
+    
+    .shapes-layer {
+        background-image: url('../assets/theme-layers/shapes.png');
+        animation-delay: 0.2s;
+    }
+    
+    .text-layer {
+        background-image: url('../assets/theme-layers/text');
+        animation-delay: 0.75s;
+    }
+}
+
+#theme-section-mobile {
+    display: none;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url('../assets/theme-layers/cover.jpg');
+    height: 100vh;
+}
+
+@media all and (max-width: 640px) {
+    // Disables parallax effect on mobile
+    #theme-section {
+       display: none;
+    }
+    #theme-section-mobile {
+       display: block;
     }
 }
 
 #event-details {
     @extend %section;
     height: 45vh;
-    background-color: #031e63;
+    background-color: #e62954;
     display: flex;
 
     .event-social-column {
@@ -120,7 +182,7 @@ html {
 
             a {
                 text-decoration: none;
-                color: #e62954;
+                color: #031e63;
                 transition: 0.2s;
             }
 
@@ -146,7 +208,7 @@ html {
 
         .date {
             font-size: 3.5em;
-            color: #e62954;
+            color: #031e63;
         }
 
         .venue {
@@ -155,37 +217,33 @@ html {
         }
 
         .place {
-            color: #c2bfbf;
-        }
-
-        .btn {
-            background-color: #e62954;
-            border: none;
-            margin-top: 10px;
-            text-transform: uppercase;
-            font-weight: 600;
-
-            &:hover {
-                background-color: #eb6282;
-            }
+            color: #031e63;
         }
     }
+}
+
+#trailer {
+    @extend %section;
+    padding: 50px 60px;
+    background-color: #031e63;
 }
 
 #about-section {
     @extend %section;
     height: 300px;
-    background-color: rgb(226, 224, 224);
+    background-color: #e62954;
     display: flex;
     
     .about-heading {
-        text-align: right;
         width: 40%;
+        color: #031e63;
+        text-align: right;
         // background-color: red;
         padding: 10vh 60px;
     }
 
     .about-details {
+        color: white;
         text-align: left;
         width: 60%;
         // background-color: green;
@@ -200,7 +258,11 @@ html {
 #our-speakers {
     @extend %section;
     padding: 35px 0 0 0;
-    background-color: antiquewhite;
+    background-color: #031e63;
+
+    h1 {
+        color: #e62954;
+    }
 
     // Allows for Animation of Link on Hover
     // Referenced from https://codepen.io/devilishalchemist/pen/ZYLZay?editors=1100
@@ -247,27 +309,29 @@ html {
     }
 }
 
-#trailer {
-    @extend %section;
-    padding: 50px 60px;
-    background-color: goldenrod;
-}
-
 #charity-section {
     @extend %section;
     height: 300px;
-    background-color: rgb(226, 224, 224);
+    background-color: #e62954;
     display: flex;
 
     .charity-heading {
         width: 40%;
-        background-color: red;
+        color: #031e63;
+        text-align: left;
+        padding: 7vh 60px;
+
+        h2 {
+            font-size: 2.5em;
+            color: white;
+        }
     }
 
     .charity-details {
         width: 60%;
-        background-color: green;
-        padding: 0 55px 0 55px;
+        color: white;
+        text-align: right;
+        padding: 5vh 55px;
 
         p {
             padding-top: 10px;
@@ -284,9 +348,10 @@ html {
 #meet-the-team {
     @extend %section;
     padding: 30px 0px 30px 0px;
-    background-color: #e62954;
+    background-color: #031e63;
 
     h1 {
+        color: #e62954;
         margin-bottom: 15px;
     }
 
@@ -302,12 +367,13 @@ html {
             }
 
             h4 {
+                color: #e62954;
                 font-size: 24px;
                 margin-top: 15px;
             }
 
             h6 {
-                color: grey;
+                color: white;
             
             }
             margin-left: 30px;
@@ -320,12 +386,12 @@ html {
     }
 }
 
-#see-you-section {
+#sponsor-section {
     @extend %section;
     height: 400px;
     padding-top: 90px;
 
-    background-color: #031e63;
+    background-color: #e62954;
     color: #fff;
 
     .btn {

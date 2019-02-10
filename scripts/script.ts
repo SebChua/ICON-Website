@@ -294,25 +294,51 @@ let speakers = {
 }
 //#endregion
 
+//#region Website Content
+let content = {
+    social_media: {
+        facebook: 'https://www.facebook.com/PPIA.ICON2018/',
+        instagram: 'https://www.instagram.com/icon_2019/',
+        email: 'mailto:unsw.ppia@gmail.com'
+    },
+    event_details: {
+        date: 'July 27, 2019',
+        venue: 'Wesley Conference Center',
+        place: 'CBD'
+    },
+    about_section: {
+        text: 'ICON is a platform for sharing IDEAS to INSPIRE the next generation of Indonesians to make an IMPACT. \
+              It is a non-profit conference where influential speakers come and spread ideas, catalyzing development \
+              and drive for the future generation of Indonesians.',
+    },
+    charity_section: {
+        name: 'Semesta Foundation',
+        text: 'Semesta focuses on providing care to the mentally-ill and education to poverty-stricken \
+              and marginalised. They provide training, infrastructure development, and management advocacy \
+              to aid these groups reclaim their livelihood for the better.',
+        link: 'http://semestafoundation.org/?lang=en'
+    }
+}
+
+//#endregion
+
 $(document).ready(() => {
-    buildHeader();
-
+    applyHeaderEffects();
     buildThemeSection();
-
     buildEventDetailsSection();
-    
     buildAboutSection();
-
-    buildTeamPhotos('Executive');
-    $('#teams-row a').on('click', () => {
-        $('#team-photo-section').html('');
-        let division = $('#teams-row').find('a:focus').text();
-        buildTeamPhotos(division);
-    });
-
+    buildCharitySection();
+    buildTeamSection();
 });
 
-function buildHeader() {
+function addButton(link: string, text: string, target_container: JQuery) {
+    $('<a>').prop({
+        href: link,
+        target: '_blank'
+    }).addClass(['btn', 'btn-primary']).text(text).appendTo(target_container);
+}
+
+function applyHeaderEffects() {
     $('#theme-section img').css('max-height', $(window).height());
 
     // Scroll Effects on Header Navigation
@@ -327,8 +353,25 @@ function buildHeader() {
 }
 
 function buildThemeSection() {
-    let theme_img = $('<img>').prop('src', '../assets/ICON2018Cover.jpg').prop('alt', 'theme-image');
-    theme_img.appendTo($('#theme-section'));
+    // Backgrounds for divs are pre-specified in index.scss
+    // Attaching both fade in and parallax effects into the layers
+    let shape_layer = $('#theme-section .shapes-layer').data('depth', 0.5);
+    let text_layer = $('#theme-section .text-layer').data('depth', 0.6);
+    let layers: JQuery[] = [shape_layer, text_layer];
+
+    for (let layer of layers)
+        layer.addClass('animated fadeIn');
+
+    $(window).on('scroll', () => {
+        // Referenced from:
+        // https://medium.com/@PatrykZabielski/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27
+        for (let layer of layers) {
+            /* Adds the parallax effect by translating down the background image
+             * by the depth property by the scroll position from the top */
+            let translate_by = -1 * (window.scrollY * layer.data('depth'));
+            layer.css('transform', 'translateY(' + translate_by + 'px)');
+        }
+    });
 }
 
 function buildEventDetailsSection() {
@@ -339,14 +382,14 @@ function buildEventDetailsSection() {
     let media_buttons = {
         'facebook': $('<a>').prop({
                         target: '_blank',
-                        href: 'https://www.facebook.com/PPIA.ICON2018/'
+                        href: content.social_media['facebook']
                     }).addClass(['fab', 'fa-facebook-f', 'fa-lg']),
         'instagram': $('<a>').prop({
                         target: '_blank',
-                        href: 'https://www.instagram.com/icon_2019/'
+                        href: content.social_media['instagram']
                     }).addClass(['fab', 'fa-instagram', 'fa-lg']),
         'email': $('<a>').prop({
-                    href: 'mailto:unsw.ppia@gmail.com'
+                    href: content.social_media['email']
                 }).addClass(['fas', 'fa-envelope', 'fa-lg'])
     }
     $('<li>').append(media_buttons['facebook']).appendTo(social_col);
@@ -354,20 +397,16 @@ function buildEventDetailsSection() {
     $('<li>').append(media_buttons['email']).appendTo(social_col);
     social_col.appendTo(social_col_div);
     
-    let event_details = $('<div>').addClass('venue-time');
-    let details = {
-        date: 'June 29, 2019',
-        venue: 'John Clancy Auditorium',
-        place: 'UNSW, Sydney'
-    }
-    $('<h1>').addClass('date').text(details.date).appendTo(event_details);
-    $('<h4>').addClass('venue').text(details.venue).appendTo(event_details);
-    $('<h5>').addClass('place').text(details.place).appendTo(event_details);
-    $('<a>').prop('href', '#').addClass(['btn', 'btn-primary']).text('Get Tickets').appendTo(event_details);
+    let details_container = $('<div>').addClass('venue-time');
+    
+    $('<h1>').addClass('date').text(content.event_details['date']).appendTo(details_container);
+    $('<h4>').addClass('venue').text(content.event_details['venue']).appendTo(details_container));
+    $('<h5>').addClass('place').text(content.event_details['place']).appendTo(details_container);
+    addButton('#', 'Get Tickets', details_container);
 
     social_col_div.appendTo(details_section);
-    $('<div>').addClass('separator').css('border-color', 'grey').appendTo(details_section);
-    event_details.appendTo(details_section);
+    $('<div>').addClass('separator').appendTo(details_section);
+    details_container.appendTo(details_section);
 }
 
 function buildAboutSection() {
@@ -377,14 +416,36 @@ function buildAboutSection() {
     $('<h1>').text('About ICON').appendTo(about_heading);
 
     let about_details = $('<div>').addClass('about-details');
-    let about_us_text = 'ICON is a platform for sharing IDEAS to INSPIRE the next generation of Indonesians to make an IMPACT. \
-    It is a non-profit conference where influential speakers come and spread ideas, catalyzing development \
-    and drive for the future generation of Indonesians.';
-    $('<p>').text(about_us_text).appendTo(about_details);
+    $('<p>').text(content.about_section['text']).appendTo(about_details);
 
-    about_heading.appendTo(about_section);
-    $('<div>').addClass('separator').appendTo(about_section);
-    about_details.appendTo(about_section);
+    about_section.append(about_heading);
+    about_section.append($('<div>').addClass('separator'));
+    about_section.append(about_details);
+}
+
+function buildCharitySection() {
+    let charity_section = $('#charity-section');
+
+    let charity_heading = $('<div>').addClass('charity-heading');
+    $('<h1>').text('Our Charity').appendTo(charity_heading);
+    $('<h2>').text(content.charity_section['name']).appendTo(charity_heading);
+
+    let charity_details = $('<div>').addClass('charity-details');
+    $('<p>').text(content.charity_section['text']).appendTo(charity_details);
+    addButton(content.charity_section['link'], 'Learn More', charity_details);
+
+    charity_section.append(charity_details);
+    charity_section.append($('<div>').addClass('separator'));
+    charity_section.append(charity_heading);
+}
+
+function buildTeamSection() {
+    buildTeamPhotos('Executive');
+    $('#teams-row a').on('click', () => {
+        $('#team-photo-section').html('');
+        let division = $('#teams-row').find('a:focus').text();
+        buildTeamPhotos(division);
+    });
 }
 
 function buildTeamPhotos(division: string) {

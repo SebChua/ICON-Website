@@ -1,17 +1,17 @@
-#see-you-section, #meet-the-team, #awards-section, #charity-section, #trailer, #our-speakers, #about-section, #event-details {
+#sponsor-section, #meet-the-team, #awards-section, #charity-section, #our-speakers, #about-section, #trailer, #event-details {
   padding: 35px 40px 35px 40px;
 }
 
 #meet-the-team a, #our-speakers a {
   position: relative;
   text-decoration: none;
-  color: #000;
+  color: white;
   padding-bottom: 8px;
   margin-right: 10px;
   margin-left: 10px;
 }
 #meet-the-team a:focus, #our-speakers a:focus {
-  color: white;
+  color: #e62954;
 }
 #meet-the-team a:before, #our-speakers a:before, #meet-the-team a:after, #our-speakers a:after {
   content: "";
@@ -20,7 +20,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #000;
+  background-color: white;
 }
 #meet-the-team a:before, #our-speakers a:before {
   opacity: 0;
@@ -44,11 +44,27 @@
 }
 
 .separator {
-  border-left: 6px solid black;
+  border-left: 6px solid #031e63;
+}
+
+.btn {
+  background-color: #031e63;
+  border: none;
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.btn:hover {
+  background-color: white;
+  color: #031e63;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+h1 {
+  font-size: 3em;
 }
 
 #main-nav {
@@ -80,13 +96,53 @@ html {
   max-height: 90px;
 }
 
-#theme-section img {
+#theme-section {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+#theme-section .layer {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+}
+#theme-section .background-layer {
+  background-image: url("../assets/theme-layers/bg.png");
+}
+#theme-section .shapes-layer {
+  background-image: url("../assets/theme-layers/shapes.png");
+  animation-delay: 0.2s;
+}
+#theme-section .text-layer {
+  background-image: url("../assets/theme-layers/text");
+  animation-delay: 0.75s;
+}
+
+#theme-section-mobile {
+  display: none;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("../assets/theme-layers/cover.jpg");
   height: 100vh;
 }
 
+@media all and (max-width: 640px) {
+  #theme-section {
+    display: none;
+  }
+
+  #theme-section-mobile {
+    display: block;
+  }
+}
 #event-details {
   height: 45vh;
-  background-color: #031e63;
+  background-color: #e62954;
   display: flex;
 }
 #event-details .event-social-column {
@@ -101,7 +157,7 @@ html {
 }
 #event-details .event-social-column #social-column a {
   text-decoration: none;
-  color: #e62954;
+  color: #031e63;
   transition: 0.2s;
 }
 #event-details .event-social-column #social-column a:hover {
@@ -120,37 +176,34 @@ html {
 }
 #event-details .venue-time .date {
   font-size: 3.5em;
-  color: #e62954;
+  color: #031e63;
 }
 #event-details .venue-time .venue {
   color: white;
   font-weight: 800;
 }
 #event-details .venue-time .place {
-  color: #c2bfbf;
+  color: #031e63;
 }
-#event-details .venue-time .btn {
-  background-color: #e62954;
-  border: none;
-  margin-top: 10px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-#event-details .venue-time .btn:hover {
-  background-color: #eb6282;
+
+#trailer {
+  padding: 50px 60px;
+  background-color: #031e63;
 }
 
 #about-section {
   height: 300px;
-  background-color: #e2e0e0;
+  background-color: #e62954;
   display: flex;
 }
 #about-section .about-heading {
-  text-align: right;
   width: 40%;
+  color: #031e63;
+  text-align: right;
   padding: 10vh 60px;
 }
 #about-section .about-details {
+  color: white;
   text-align: left;
   width: 60%;
   padding: 10vh 55px;
@@ -161,7 +214,10 @@ html {
 
 #our-speakers {
   padding: 35px 0 0 0;
-  background-color: antiquewhite;
+  background-color: #031e63;
+}
+#our-speakers h1 {
+  color: #e62954;
 }
 #our-speakers #speaker-content-row {
   padding-top: 25px;
@@ -193,24 +249,26 @@ html {
   background-color: greenyellow;
 }
 
-#trailer {
-  padding: 50px 60px;
-  background-color: goldenrod;
-}
-
 #charity-section {
   height: 300px;
-  background-color: #e2e0e0;
+  background-color: #e62954;
   display: flex;
 }
 #charity-section .charity-heading {
   width: 40%;
-  background-color: red;
+  color: #031e63;
+  text-align: left;
+  padding: 7vh 60px;
+}
+#charity-section .charity-heading h2 {
+  font-size: 2.5em;
+  color: white;
 }
 #charity-section .charity-details {
   width: 60%;
-  background-color: green;
-  padding: 0 55px 0 55px;
+  color: white;
+  text-align: right;
+  padding: 5vh 55px;
 }
 #charity-section .charity-details p {
   padding-top: 10px;
@@ -222,9 +280,10 @@ html {
 
 #meet-the-team {
   padding: 30px 0px 30px 0px;
-  background-color: #e62954;
+  background-color: #031e63;
 }
 #meet-the-team h1 {
+  color: #e62954;
   margin-bottom: 15px;
 }
 #meet-the-team #team-photo-section {
@@ -241,19 +300,20 @@ html {
   margin-top: 15px;
 }
 #meet-the-team #team-photo-section .profile h4 {
+  color: #e62954;
   font-size: 24px;
   margin-top: 15px;
 }
 #meet-the-team #team-photo-section .profile h6 {
-  color: grey;
+  color: white;
 }
-#see-you-section {
+#sponsor-section {
   height: 400px;
   padding-top: 90px;
-  background-color: #031e63;
+  background-color: #e62954;
   color: #fff;
 }
-#see-you-section .btn {
+#sponsor-section .btn {
   margin-top: 10px;
 }
 
