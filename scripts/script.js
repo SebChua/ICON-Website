@@ -288,31 +288,31 @@ let speakers = {
         }
     ],
     "2019": [
-        {
-            "name": "Alamanda Shantika",
-            "title": "Founder & CEO",
-            "organisation": "Binar Academy"
-        },
-        {
-            "name": "Daniel Mananta",
-            "title": "Founder & CEO",
-            "organisation": "DAMN! I LOVE INDONESIA"
-        },
-        {
-            "name": "Andy F. Noya",
-            "title": "Host",
-            "organisation": "Kick Andy"
-        },
-        {
-            "name": "Noor Huda Ismail",
-            "title": "Founder",
-            "organisation": "Institute for International Peace Building Indonesia"
-        },
-        {
-            "name": "Isyana Syarasvati",
-            "title": "Performer",
-            "organisation": ""
-        }
+    // {
+    //     "name": "Alamanda Shantika",
+    //     "title": "Founder & CEO",
+    //     "organisation": "Binar Academy"
+    // }, 
+    // {
+    //     "name": "Daniel Mananta",
+    //     "title": "Founder & CEO",
+    //     "organisation": "DAMN! I LOVE INDONESIA"
+    // },
+    // {
+    //     "name": "Andy F. Noya",
+    //     "title": "Host",
+    //     "organisation": "Kick Andy"
+    // },
+    // {
+    //     "name": "Noor Huda Ismail",
+    //     "title": "Founder",
+    //     "organisation": "Institute for International Peace Building Indonesia"
+    // },
+    // {
+    //     "name": "Isyana Syarasvati",
+    //     "title": "Performer",
+    //     "organisation": ""
+    // }
     ]
 };
 //#endregion
@@ -393,6 +393,22 @@ function buildEventDetailsSection() {
     let details_section = $('#event-details');
     let social_col_div = $('<div>').addClass('event-social-column');
     let social_col = $('<ul>').prop('id', 'social-column');
+    buildSocialMediaList(social_col);
+    social_col.appendTo(social_col_div);
+    let details_container = $('<div>').addClass('venue-time');
+    $('<h1>').addClass('date').text(content.event_details['date']).appendTo(details_container);
+    $('<h4>').addClass('venue').text(content.event_details['venue']).appendTo(details_container);
+    $('<h5>').addClass('place').text(content.event_details['place']).appendTo(details_container);
+    addButton('#', 'Get Tickets', details_container);
+    social_col_div.appendTo(details_section);
+    $('<div>').addClass('separator').appendTo(details_section);
+    details_container.appendTo(details_section);
+}
+/**
+ * Populates an unordered list container with social media icons and links
+ * @param container <uL> Jquery container that contains the social media list
+ */
+function buildSocialMediaList(container) {
     let media_buttons = {
         'facebook': $('<a>').prop({
             target: '_blank',
@@ -406,26 +422,32 @@ function buildEventDetailsSection() {
             href: content.social_media['email']
         }).addClass(['fas', 'fa-envelope', 'fa-lg'])
     };
-    $('<li>').append(media_buttons['facebook']).appendTo(social_col);
-    $('<li>').append(media_buttons['instagram']).appendTo(social_col);
-    $('<li>').append(media_buttons['email']).appendTo(social_col);
-    social_col.appendTo(social_col_div);
-    let details_container = $('<div>').addClass('venue-time');
-    $('<h1>').addClass('date').text(content.event_details['date']).appendTo(details_container);
-    $('<h4>').addClass('venue').text(content.event_details['venue']).appendTo(details_container);
-    $('<h5>').addClass('place').text(content.event_details['place']).appendTo(details_container);
-    addButton('#', 'Get Tickets', details_container);
-    social_col_div.appendTo(details_section);
-    $('<div>').addClass('separator').appendTo(details_section);
-    details_container.appendTo(details_section);
+    $('<li>').append(media_buttons['facebook']).appendTo(container);
+    $('<li>').append(media_buttons['instagram']).appendTo(container);
+    $('<li>').append(media_buttons['email']).appendTo(container);
 }
 function buildSpeakersSection() {
-    $('#speakers-history-row a').on('click', () => {
-        $('#speaker-content-row').html('');
+    buildSpeakerPhotos('2019');
+    $('#speaker-history-row a').on('click', () => {
         // Strips 'ICON ' from the link text
-        let year = $('#speakers-history-row').find('a:focus').text().substr(5);
+        let year = $('#speaker-history-row').find('a:focus').text().substr(5);
+        buildSpeakerPhotos(year);
+    });
+}
+function buildSpeakerPhotos(year) {
+    $('#speaker-content-row').html('');
+    if (speakers[year].length === 0) {
+        let coming_soon = $('<div>').prop('id', 'coming-soon').addClass('container-fluid text-center');
+        let heading_text = $('<h1>').text('Be the first to know the ICONs of 2019!');
+        let social_row = $('<ul>');
+        buildSocialMediaList(social_row);
+        coming_soon.append(heading_text);
+        coming_soon.append(social_row);
+        attachRandomFadeIn(coming_soon);
+        $('#speaker-content-row').append(coming_soon);
+    }
+    else {
         $('.speaker-div').css('flex', 100 / speakers[year].length + '%');
-        console.log(speakers[year]);
         for (let i = 0; i < speakers[year].length; i++) {
             let speaker_container = $('<div>').text(' ').addClass('speaker-div speaker-img' + (i + 1));
             let overlay = $('<div>').addClass('overlay').appendTo(speaker_container);
@@ -433,17 +455,10 @@ function buildSpeakersSection() {
             $('<h1>').text(speakers[year][i].name).appendTo(details);
             $('<h3>').text(speakers[year][i].title).appendTo(details);
             $('<h2>').text(speakers[year][i].organisation).appendTo(details);
+            attachRandomFadeIn(speaker_container);
             $('#speaker-content-row').append(speaker_container);
-            attachSpeakerHoverEffect(speaker_container);
         }
-    });
-}
-function attachSpeakerHoverEffect(container) {
-    console.log('Attaching Hover Listener to ' + container);
-    container.on('click', () => {
-        $('.overlay').css('opacity', 1 + ' !important');
-        console.log('Hovering over');
-    });
+    }
 }
 function buildAboutSection() {
     let about_section = $('#about-section');
@@ -483,9 +498,7 @@ function buildTeamPhotos(division) {
         $('<h4>').text(member.firstName + ' ' + member.lastName).appendTo(profile);
         $('<h6>').text(member.role).appendTo(profile);
         // Randomises the fade in animation time to create a twinkle star fade in effect
-        let delay = Math.random() * 0.5;
-        profile.css('animation-delay', delay + 's');
-        profile.addClass('animated fadeIn');
+        attachRandomFadeIn(profile);
         profile.appendTo(photoContainer);
     }
     photoContainer.appendTo($('#team-photo-section'));
@@ -495,6 +508,12 @@ function buildImageURL(member) {
     return '../assets/team-photos/' +
         normalise(member.division) +
         '/' + member.firstName + '-' + member.lastName + '.jpg';
+}
+/** Randomises the fade in animation time to create a twinkle star fade in effect */
+function attachRandomFadeIn(container) {
+    let delay = Math.random() * 0.2;
+    container.css('animation-delay', delay + 's');
+    container.addClass('animated fadeIn');
 }
 function normalise(str) {
     return str.replace(/\s/g, '').toLowerCase();

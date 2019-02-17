@@ -264,15 +264,47 @@ h1 {
         color: #e62954;
     }
 
-    // Allows for Animation of Link on Hover
-    // Referenced from https://codepen.io/devilishalchemist/pen/ZYLZay?editors=1100
-    a {
-        @extend %link-hover-effect;
+    #speaker-history-row {
+        a {
+            // Allows for Animation of Link on Hover
+            // Referenced from https://codepen.io/devilishalchemist/pen/ZYLZay?editors=1100
+            @extend %link-hover-effect;
+        }
     }
 
     #speaker-content-row {
         padding-top: 25px;
         display: flex;
+        position: relative;
+
+        #coming-soon {
+            display: block;
+            height: 500px;
+            padding-top: 100px;
+
+            ul {
+                list-style: none;
+                font-size: 40px;
+                
+                li {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 20px 40px 20px 40px;
+                    
+                    a {
+                        color: white;
+                        transition: 0.2s;
+
+                        &:hover {
+                            color: #e62954;
+                            text-decoration: none;
+                        }
+                    }
+
+            
+                }
+            }
+        }
 
         .speaker-div {
             flex: 16.67%;
@@ -297,6 +329,7 @@ h1 {
             .details {
                 position: absolute;
                 bottom: 0;
+                margin-right: 10px;
 
                 h1 {
                     font-size: 40px;

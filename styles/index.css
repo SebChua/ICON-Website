@@ -2,7 +2,7 @@
   padding: 35px 40px 35px 40px;
 }
 
-#meet-the-team a, #our-speakers a {
+#meet-the-team a, #our-speakers #speaker-history-row a {
   position: relative;
   text-decoration: none;
   color: white;
@@ -10,10 +10,10 @@
   margin-right: 10px;
   margin-left: 10px;
 }
-#meet-the-team a:focus, #our-speakers a:focus {
+#meet-the-team a:focus, #our-speakers #speaker-history-row a:focus {
   color: #e62954;
 }
-#meet-the-team a:before, #our-speakers a:before, #meet-the-team a:after, #our-speakers a:after {
+#meet-the-team a:before, #our-speakers #speaker-history-row a:before, #meet-the-team a:after, #our-speakers #speaker-history-row a:after {
   content: "";
   position: absolute;
   bottom: 2px;
@@ -22,24 +22,24 @@
   height: 2px;
   background-color: white;
 }
-#meet-the-team a:before, #our-speakers a:before {
+#meet-the-team a:before, #our-speakers #speaker-history-row a:before {
   opacity: 0;
   transform: translateY(-8px);
   transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
 }
-#meet-the-team a:after, #our-speakers a:after {
+#meet-the-team a:after, #our-speakers #speaker-history-row a:after {
   opacity: 0;
   transform: translateY(4px);
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
 }
-#meet-the-team a:hover:before, #our-speakers a:hover:before, #meet-the-team a:hover:after, #our-speakers a:hover:after, #meet-the-team a:focus:before, #our-speakers a:focus:before, #meet-the-team a:focus:after, #our-speakers a:focus:after {
+#meet-the-team a:hover:before, #our-speakers #speaker-history-row a:hover:before, #meet-the-team a:hover:after, #our-speakers #speaker-history-row a:hover:after, #meet-the-team a:focus:before, #our-speakers #speaker-history-row a:focus:before, #meet-the-team a:focus:after, #our-speakers #speaker-history-row a:focus:after {
   opacity: 1;
   transform: translateY(0);
 }
-#meet-the-team a:hover:before, #our-speakers a:hover:before, #meet-the-team a:focus:before, #our-speakers a:focus:before {
+#meet-the-team a:hover:before, #our-speakers #speaker-history-row a:hover:before, #meet-the-team a:focus:before, #our-speakers #speaker-history-row a:focus:before {
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
 }
-#meet-the-team a:hover:after, #our-speakers a:hover:after, #meet-the-team a:focus:after, #our-speakers a:focus:after {
+#meet-the-team a:hover:after, #our-speakers #speaker-history-row a:hover:after, #meet-the-team a:focus:after, #our-speakers #speaker-history-row a:focus:after {
   transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
 }
 
@@ -222,6 +222,29 @@ h1 {
 #our-speakers #speaker-content-row {
   padding-top: 25px;
   display: flex;
+  position: relative;
+}
+#our-speakers #speaker-content-row #coming-soon {
+  display: block;
+  height: 500px;
+  padding-top: 100px;
+}
+#our-speakers #speaker-content-row #coming-soon ul {
+  list-style: none;
+  font-size: 40px;
+}
+#our-speakers #speaker-content-row #coming-soon ul li {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 20px 40px 20px 40px;
+}
+#our-speakers #speaker-content-row #coming-soon ul li a {
+  color: white;
+  transition: 0.2s;
+}
+#our-speakers #speaker-content-row #coming-soon ul li a:hover {
+  color: #e62954;
+  text-decoration: none;
 }
 #our-speakers #speaker-content-row .speaker-div {
   flex: 16.67%;
@@ -244,6 +267,7 @@ h1 {
 #our-speakers #speaker-content-row .overlay .details {
   position: absolute;
   bottom: 0;
+  margin-right: 10px;
 }
 #our-speakers #speaker-content-row .overlay .details h1 {
   font-size: 40px;
