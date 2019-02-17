@@ -272,39 +272,70 @@ h1 {
 
     #speaker-content-row {
         padding-top: 25px;
+        display: flex;
 
-        #speakers-column {
-            background-color: green;
-            display: flex;
+        .speaker-div {
+            flex: 16.67%;
+            height: 500px;
+            position: relative;
+        }
 
-            .speaker-div {
-                flex: 16.67%;
-                height: 500px;
+        .overlay {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: 0.2s ease;
+            text-align: left;
+            background-color: rgb(41, 40, 40);
+            padding: 0px 25px 10px 15px;
+    
+            &:hover {
+                opacity: 0.93;
             }
 
-            .speaker-img {
-                background-color: purple;
-            }
+            .details {
+                position: absolute;
+                bottom: 0;
 
-            .speaker-img1 {
-                background-color: teal;
+                h1 {
+                    font-size: 40px;
+                }
+        
+                h2 {
+                    color: white;
+                    font-size: 36px;
+                }
+        
+                h3 {
+                    color: rgb(214, 214, 214);
+                    font-size: 20px;
+                }
             }
+        }
 
-            .speaker-img2 {
-                background-color: orange;
-            }
+        .speaker-img {
+            background-color: purple;
+        }
 
-            .speaker-img3 {
-                background-color: #e62954;
-            }
+        .speaker-img1 {
+            background-color: teal;
+        }
 
-            .speaker-img4 {
-                background-color: aquamarine;
-            }
+        .speaker-img2 {
+            background-color: orange;
+        }
 
-            .speaker-img5 {
-                background-color: greenyellow;
-            }
+        .speaker-img3 {
+            background-color: #e62954;
+        }
+
+        .speaker-img4 {
+            background-color: aquamarine;
+        }
+
+        .speaker-img5 {
+            background-color: greenyellow;
         }
     }
 }

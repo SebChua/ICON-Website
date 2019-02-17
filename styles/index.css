@@ -221,31 +221,57 @@ h1 {
 }
 #our-speakers #speaker-content-row {
   padding-top: 25px;
-}
-#our-speakers #speaker-content-row #speakers-column {
-  background-color: green;
   display: flex;
 }
-#our-speakers #speaker-content-row #speakers-column .speaker-div {
+#our-speakers #speaker-content-row .speaker-div {
   flex: 16.67%;
   height: 500px;
+  position: relative;
 }
-#our-speakers #speaker-content-row #speakers-column .speaker-img {
+#our-speakers #speaker-content-row .overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.2s ease;
+  text-align: left;
+  background-color: #292828;
+  padding: 0px 25px 10px 15px;
+}
+#our-speakers #speaker-content-row .overlay:hover {
+  opacity: 0.93;
+}
+#our-speakers #speaker-content-row .overlay .details {
+  position: absolute;
+  bottom: 0;
+}
+#our-speakers #speaker-content-row .overlay .details h1 {
+  font-size: 40px;
+}
+#our-speakers #speaker-content-row .overlay .details h2 {
+  color: white;
+  font-size: 36px;
+}
+#our-speakers #speaker-content-row .overlay .details h3 {
+  color: #d6d6d6;
+  font-size: 20px;
+}
+#our-speakers #speaker-content-row .speaker-img {
   background-color: purple;
 }
-#our-speakers #speaker-content-row #speakers-column .speaker-img1 {
+#our-speakers #speaker-content-row .speaker-img1 {
   background-color: teal;
 }
-#our-speakers #speaker-content-row #speakers-column .speaker-img2 {
+#our-speakers #speaker-content-row .speaker-img2 {
   background-color: orange;
 }
-#our-speakers #speaker-content-row #speakers-column .speaker-img3 {
+#our-speakers #speaker-content-row .speaker-img3 {
   background-color: #e62954;
 }
-#our-speakers #speaker-content-row #speakers-column .speaker-img4 {
+#our-speakers #speaker-content-row .speaker-img4 {
   background-color: aquamarine;
 }
-#our-speakers #speaker-content-row #speakers-column .speaker-img5 {
+#our-speakers #speaker-content-row .speaker-img5 {
   background-color: greenyellow;
 }
 
