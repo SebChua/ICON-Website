@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/SebChua/ICON-Website#readme",
   "dependencies": {
-    "@types/jquery": "^3.3.22",
-    "jquery": "^3.3.1"
+    "@types/jquery": "^3.3.29",
+    "jquery": "^3.4.1"
   }
 }
