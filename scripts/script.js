@@ -250,7 +250,7 @@ let speakers = {
             "organisation": "Institute for International Peace Building Indonesia"
         },
         {
-            "name": "Isyana Syarasvati",
+            "name": "Isyana Sarasvati",
             "title": "Performer",
             "organisation": ""
         }
