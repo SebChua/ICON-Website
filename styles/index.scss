@@ -5,6 +5,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
 %section {
     padding: 35px 40px 35px 40px;
+    width: 100%;
 }
 
 %link-hover-effect {
@@ -51,8 +52,14 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     }
 }
 
+.row {
+    align-items: center;
+    width: 100%;
+}
+
 .separator {
     border-left: 6px solid #031e63;
+    min-height: 100%;
 }
 
 .btn {
@@ -100,6 +107,15 @@ h1 {
 
     .dropdown:hover > .dropdown-menu {
         display: block;
+    }
+
+    .btn {
+        background-color: #e62954;
+        color: #d8d7d7 !important;
+
+        &:hover {
+            color: #031e63 !important;
+        }
     }
     
     a {
@@ -166,19 +182,22 @@ h1 {
 
 #event-details {
     @extend %section;
-    height: 45vh;
     background-color: #e62954;
     display: flex;
 
     .event-social-column {
-        width: 40%;
-        line-height: 12vh;
+        height: 100%;
 
         #social-column {
             list-style: none;
             text-align: right;
-            margin-right: 5vw;
+            margin-right: 3vw;
             font-size: 2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 100%;
+
 
             a {
                 text-decoration: none;
@@ -201,11 +220,6 @@ h1 {
     }
 
     .venue-time {
-        width: 60%;
-        margin-left: 5vw;
-        padding-top: 6vh;
-        // background-color: red;
-
         .date {
             font-size: 3.5em;
             color: #031e63;
@@ -230,28 +244,18 @@ h1 {
 
 #about-section {
     @extend %section;
-    height: 300px;
     background-color: #e62954;
     display: flex;
     
     .about-heading {
-        width: 40%;
         color: #031e63;
         text-align: right;
-        // background-color: red;
-        padding: 10vh 60px;
+        padding-right: 50px;
     }
 
     .about-details {
         color: white;
         text-align: left;
-        width: 60%;
-        // background-color: green;
-        padding: 10vh 55px;
-    }
-
-    .column {
-        flex: 50%;
     }
 }
 
@@ -375,15 +379,13 @@ h1 {
 
 #charity-section {
     @extend %section;
-    height: 300px;
     background-color: #e62954;
     display: flex;
-
+    
     .charity-heading {
-        width: 40%;
         color: #031e63;
         text-align: left;
-        padding: 7vh 60px;
+        padding-left: 50px;
 
         h2 {
             font-size: 2.5em;
@@ -392,15 +394,21 @@ h1 {
     }
 
     .charity-details {
-        width: 60%;
         color: white;
         text-align: right;
-        padding: 5vh 55px;
-
-        p {
-            padding-top: 10px;
-        }
+        padding-right: 50px;
     }
+
+    // .charity-details {
+    //     width: 60%;
+    //     color: white;
+    //     text-align: right;
+    //     padding: 5vh 55px;
+
+    //     p {
+    //         padding-top: 10px;
+    //     }
+    // }
 }
 
 #awards-section {

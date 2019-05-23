@@ -250,7 +250,7 @@ let speakers = {
             "organisation": "Institute for International Peace Building Indonesia"
         },
         {
-            "name": "Isyana Syarasvati",
+            "name": "Isyana Sarasvati",
             "title": "Performer",
             "organisation": ""
         }
@@ -288,31 +288,16 @@ let speakers = {
         }
     ],
     "2019": [
-    // {
-    //     "name": "Alamanda Shantika",
-    //     "title": "Founder & CEO",
-    //     "organisation": "Binar Academy"
-    // }, 
-    // {
-    //     "name": "Daniel Mananta",
-    //     "title": "Founder & CEO",
-    //     "organisation": "DAMN! I LOVE INDONESIA"
-    // },
-    // {
-    //     "name": "Andy F. Noya",
-    //     "title": "Host",
-    //     "organisation": "Kick Andy"
-    // },
-    // {
-    //     "name": "Noor Huda Ismail",
-    //     "title": "Founder",
-    //     "organisation": "Institute for International Peace Building Indonesia"
-    // },
-    // {
-    //     "name": "Isyana Syarasvati",
-    //     "title": "Performer",
-    //     "organisation": ""
-    // }
+        {
+            "name": "Ernest Prakasa",
+            "title": "Award-Winning Director",
+            "organisation": ""
+        },
+        {
+            "name": "Sabrina Bensawan",
+            "title": "Founder",
+            "organisation": "Saab Shares"
+        }
     ]
 };
 //#endregion
@@ -321,12 +306,13 @@ let content = {
     social_media: {
         facebook: 'https://www.facebook.com/PPIA.ICON2018/',
         instagram: 'https://www.instagram.com/icon_2019/',
-        email: 'mailto:unsw.ppia@gmail.com'
+        email: 'mailto:unsw.ppia@gmail.com',
+        tickets: 'https://tinyurl.com/icon2k19'
     },
     event_details: {
         date: 'July 27, 2019',
         venue: 'Wesley Conference Center',
-        place: 'CBD'
+        place: 'Pitt St, Sydney NSW 2000'
     },
     about_section: {
         text: 'ICON is a platform for sharing IDEAS to INSPIRE the next generation of Indonesians to make an IMPACT. \
@@ -334,11 +320,11 @@ let content = {
               and drive for the future generation of Indonesians.',
     },
     charity_section: {
-        name: 'Semesta Foundation',
-        text: 'Semesta focuses on providing care to the mentally-ill and education to poverty-stricken \
-              and marginalised. They provide training, infrastructure development, and management advocacy \
-              to aid these groups reclaim their livelihood for the better.',
-        link: 'http://semestafoundation.org/?lang=en'
+        name: 'Saab Shares',
+        text: 'Saab Shares is a non-profit organization which focuses on empowering the underprivileged, focusing on \
+                providing an education alongside character-building sessions to focus on breaking the cycle of poverty \
+                for our future generation. Saab Shares also aims to provide support in healthcare and women empowerment.',
+        link: 'https://saabshares.org/en/index.php'
     }
 };
 //#endregion
@@ -378,7 +364,7 @@ function buildThemeSection() {
     let layers = [shape_layer, text_layer];
     for (let layer of layers)
         layer.addClass('animated fadeIn');
-    $(window).on('scroll', () => {
+    $(window).scroll(() => {
         // Referenced from:
         // https://medium.com/@PatrykZabielski/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27
         for (let layer of layers) {
@@ -391,18 +377,20 @@ function buildThemeSection() {
 }
 function buildEventDetailsSection() {
     let details_section = $('#event-details');
-    let social_col_div = $('<div>').addClass('event-social-column');
+    let details_row = $('<div>').addClass('row');
+    let social_col_div = $('<div>').addClass('event-social-column col-5');
+    let details_div = $('<div>').addClass('venue-time col-5');
     let social_col = $('<ul>').prop('id', 'social-column');
     buildSocialMediaList(social_col);
     social_col.appendTo(social_col_div);
-    let details_container = $('<div>').addClass('venue-time');
-    $('<h1>').addClass('date').text(content.event_details['date']).appendTo(details_container);
-    $('<h4>').addClass('venue').text(content.event_details['venue']).appendTo(details_container);
-    $('<h5>').addClass('place').text(content.event_details['place']).appendTo(details_container);
-    addButton('#', 'Get Tickets', details_container);
-    social_col_div.appendTo(details_section);
-    $('<div>').addClass('separator').appendTo(details_section);
-    details_container.appendTo(details_section);
+    $('<h1>').addClass('date').text(content.event_details['date']).appendTo(details_div);
+    $('<h4>').addClass('venue').text(content.event_details['venue']).appendTo(details_div);
+    $('<h5>').addClass('place').text(content.event_details['place']).appendTo(details_div);
+    addButton(content.social_media['tickets'], 'Get Tickets', details_div);
+    details_row.append(social_col_div);
+    details_row.append($('<div>').addClass('separator col-auto'));
+    details_row.append(details_div);
+    details_section.append(details_row);
 }
 /**
  * Populates an unordered list container with social media icons and links
@@ -462,25 +450,29 @@ function buildSpeakerPhotos(year) {
 }
 function buildAboutSection() {
     let about_section = $('#about-section');
-    let about_heading = $('<div>').addClass('about-heading');
+    let about_row = $('<div>').addClass('row');
+    let about_heading = $('<div>').addClass('about-heading col-4');
     $('<h1>').text('About ICON').appendTo(about_heading);
-    let about_details = $('<div>').addClass('about-details');
+    let about_details = $('<div>').addClass('about-details col-6');
     $('<p>').text(content.about_section['text']).appendTo(about_details);
-    about_section.append(about_heading);
-    about_section.append($('<div>').addClass('separator'));
-    about_section.append(about_details);
+    about_row.append(about_heading);
+    about_row.append($('<div>').addClass('separator col-auto'));
+    about_row.append(about_details);
+    about_section.append(about_row);
 }
 function buildCharitySection() {
     let charity_section = $('#charity-section');
-    let charity_heading = $('<div>').addClass('charity-heading');
+    let charity_row = $('<div>').addClass('row');
+    let charity_heading = $('<div>').addClass('charity-heading col-4');
     $('<h1>').text('Our Charity').appendTo(charity_heading);
     $('<h2>').text(content.charity_section['name']).appendTo(charity_heading);
-    let charity_details = $('<div>').addClass('charity-details');
+    let charity_details = $('<div>').addClass('charity-details col-7');
     $('<p>').text(content.charity_section['text']).appendTo(charity_details);
     addButton(content.charity_section['link'], 'Learn More', charity_details);
-    charity_section.append(charity_details);
-    charity_section.append($('<div>').addClass('separator'));
-    charity_section.append(charity_heading);
+    charity_row.append(charity_details);
+    charity_row.append($('<div>').addClass('separator'));
+    charity_row.append(charity_heading);
+    charity_section.append(charity_row);
 }
 function buildTeamSection() {
     buildTeamPhotos('Executive');
