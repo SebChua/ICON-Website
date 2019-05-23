@@ -279,8 +279,8 @@ let speakers = {
         },
         {
             "name": "Arnold Poernomo",
-            "title": "Chef & Co-Founder",
-            "organisation": "Poernomo Brothers"
+            "title": "Chef & Judge",
+            "organisation": "Masterchef Indonesia"
         },
         {
             "name": "Jaz",
