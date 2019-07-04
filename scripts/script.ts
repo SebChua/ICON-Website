@@ -452,10 +452,11 @@ function buildSpeakerPhotos(year: string) {
         attachRandomFadeIn(coming_soon);
         $('#speaker-content-row').append(coming_soon);
     } else {
-        $('.speaker-div').css('flex', 100 / speakers[year].length + '%');
+        // $('.speaker-div').css('flex', 100 / speakers[year].length + '%');
     
         for (let i = 0; i < speakers[year].length; i++) {
-            let speaker_container = $('<div>').text(' ').addClass('speaker-div speaker-img' + (i + 1));
+            // let speaker_container = $('<div>').text(' ').addClass('speaker-div speaker-img' + (i + 1));
+            let speaker_container = $('<div>').text(' ').addClass('speaker-div col-lg speaker-img' + (i + 1));
             let overlay = $('<div>').addClass('overlay').appendTo(speaker_container);
             let details = $('<div>').addClass('details').appendTo(overlay);
             

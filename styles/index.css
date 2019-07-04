@@ -251,7 +251,6 @@ h1 {
   text-decoration: none;
 }
 #our-speakers #speaker-content-row .speaker-div {
-  flex: 16.67%;
   height: 500px;
   position: relative;
 }
