@@ -111,13 +111,6 @@ let team = {
             "division": "Design",
             "role": "Committee",
             "key": "elenahadinata"
-        },
-        {
-            "firstName": "Nicole",
-            "lastName": "Samudera",
-            "division": "Design",
-            "role": "Committee",
-            "key": "nicolesamudera"
         }
     ],
     "Liaison Officers": [
@@ -222,6 +215,20 @@ let team = {
             "division": "Logistics",
             "role": "Committee",
             "key": "anastasiakristabella"
+        },
+        {
+            "firstName": "Carina",
+            "lastName": "Sulianto",
+            "division": "Logistics",
+            "role": "Committee",
+            "key": "carinasulianto"
+        },
+        {
+            "firstName": "Nicholas",
+            "lastName": "Enstein",
+            "division": "Logistics",
+            "role": "Committee",
+            "key": "nicholasenstein"
         }
     ]
 };
@@ -290,14 +297,24 @@ let speakers = {
     ],
     "2019": [
         {
-            "name": "Ernest Prakasa",
-            "title": "Award-Winning Director",
+            "name": "Pandji Pragiwoksono",
+            "title": "Comedian, Director, Influencer",
             "organisation": ""
-        }, 
+        },
+        {
+            "name": "David Soong",
+            "title": "Founder",
+            "organisation": "Axioo"
+        },
         {
             "name": "Sabrina Bensawan",
             "title": "Founder",
             "organisation": "Saab Shares"
+        },
+        {
+            "name": "Rizky Febian",
+            "title": "Performer",
+            "organisation": ""
         }
     ]
 }
@@ -306,7 +323,7 @@ let speakers = {
 //#region Website Content
 let content = {
     social_media: {
-        facebook: 'https://www.facebook.com/PPIA.ICON2018/',
+        facebook: 'https://www.facebook.com/PPIA.ICON2019/',
         instagram: 'https://www.instagram.com/icon_2019/',
         email: 'mailto:unsw.ppia@gmail.com',
         tickets: 'https://tinyurl.com/icon2k19'
@@ -453,7 +470,7 @@ function buildSpeakerPhotos(year: string) {
         $('#speaker-content-row').append(coming_soon);
     } else {
         // $('.speaker-div').css('flex', 100 / speakers[year].length + '%');
-    
+        console.log(year);
         for (let i = 0; i < speakers[year].length; i++) {
             // let speaker_container = $('<div>').text(' ').addClass('speaker-div speaker-img' + (i + 1));
             let speaker_container = $('<div>').text(' ').addClass('speaker-div col-lg speaker-img' + (i + 1));

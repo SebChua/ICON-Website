@@ -1,5 +1,5 @@
 //#region Team Member Info JSON
-let team = {
+var team = {
     "Executive": [
         {
             "firstName": "Sebastian",
@@ -111,13 +111,6 @@ let team = {
             "division": "Design",
             "role": "Committee",
             "key": "elenahadinata"
-        },
-        {
-            "firstName": "Nicole",
-            "lastName": "Samudera",
-            "division": "Design",
-            "role": "Committee",
-            "key": "nicolesamudera"
         }
     ],
     "Liaison Officers": [
@@ -222,12 +215,26 @@ let team = {
             "division": "Logistics",
             "role": "Committee",
             "key": "anastasiakristabella"
+        },
+        {
+            "firstName": "Carina",
+            "lastName": "Sulianto",
+            "division": "Logistics",
+            "role": "Committee",
+            "key": "carinasulianto"
+        },
+        {
+            "firstName": "Nicholas",
+            "lastName": "Enstein",
+            "division": "Logistics",
+            "role": "Committee",
+            "key": "nicholasenstein"
         }
     ]
 };
 //#endregion
 //#region Speaker Info JSON
-let speakers = {
+var speakers = {
     "2017": [
         {
             "name": "Alamanda Shantika",
@@ -289,22 +296,32 @@ let speakers = {
     ],
     "2019": [
         {
-            "name": "Ernest Prakasa",
-            "title": "Award-Winning Director",
+            "name": "Pandji Pragiwoksono",
+            "title": "Comedian, Director, Influencer",
             "organisation": ""
+        },
+        {
+            "name": "David Soong",
+            "title": "Founder",
+            "organisation": "Axioo"
         },
         {
             "name": "Sabrina Bensawan",
             "title": "Founder",
             "organisation": "Saab Shares"
+        },
+        {
+            "name": "Rizky Febian",
+            "title": "Performer",
+            "organisation": ""
         }
     ]
 };
 //#endregion
 //#region Website Content
-let content = {
+var content = {
     social_media: {
-        facebook: 'https://www.facebook.com/PPIA.ICON2018/',
+        facebook: 'https://www.facebook.com/PPIA.ICON2019/',
         instagram: 'https://www.instagram.com/icon_2019/',
         email: 'mailto:unsw.ppia@gmail.com',
         tickets: 'https://tinyurl.com/icon2k19'
@@ -317,7 +334,7 @@ let content = {
     about_section: {
         text: 'ICON is a platform for sharing IDEAS to INSPIRE the next generation of Indonesians to make an IMPACT. \
               It is a non-profit conference where influential speakers come and spread ideas, catalyzing development \
-              and drive for the future generation of Indonesians.',
+              and drive for the future generation of Indonesians.'
     },
     charity_section: {
         name: 'Saab Shares',
@@ -328,7 +345,7 @@ let content = {
     }
 };
 //#endregion
-$(document).ready(() => {
+$(document).ready(function () {
     applyHeaderEffects();
     buildThemeSection();
     buildEventDetailsSection();
@@ -344,11 +361,12 @@ function addButton(link, text, target_container) {
     }).addClass(['btn', 'btn-primary']).text(text).appendTo(target_container);
 }
 function applyHeaderEffects() {
+    var _this = this;
     $('#theme-section img').css('max-height', $(window).height());
     // Scroll Effects on Header Navigation
-    $(window).scroll(() => {
-        let distanceFromTop = $('#theme-section').height() - 600;
-        if ($(this).scrollTop() > distanceFromTop - $('#main-nav').height()) {
+    $(window).scroll(function () {
+        var distanceFromTop = $('#theme-section').height() - 600;
+        if ($(_this).scrollTop() > distanceFromTop - $('#main-nav').height()) {
             $('#main-nav').css('background-color', 'rgba(0, 0, 0, 0.8)');
         }
         else {
@@ -359,28 +377,31 @@ function applyHeaderEffects() {
 function buildThemeSection() {
     // Backgrounds for divs are pre-specified in index.scss
     // Attaching both fade in and parallax effects into the layers
-    let shape_layer = $('#theme-section .shapes-layer').data('depth', 0.5);
-    let text_layer = $('#theme-section .text-layer').data('depth', 0.6);
-    let layers = [shape_layer, text_layer];
-    for (let layer of layers)
+    var shape_layer = $('#theme-section .shapes-layer').data('depth', 0.5);
+    var text_layer = $('#theme-section .text-layer').data('depth', 0.6);
+    var layers = [shape_layer, text_layer];
+    for (var _i = 0, layers_1 = layers; _i < layers_1.length; _i++) {
+        var layer = layers_1[_i];
         layer.addClass('animated fadeIn');
-    $(window).scroll(() => {
+    }
+    $(window).scroll(function () {
         // Referenced from:
         // https://medium.com/@PatrykZabielski/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27
-        for (let layer of layers) {
+        for (var _i = 0, layers_2 = layers; _i < layers_2.length; _i++) {
+            var layer = layers_2[_i];
             /* Adds the parallax effect by translating down the background image
              * by the depth property by the scroll position from the top */
-            let translate_by = -1 * (window.scrollY * layer.data('depth'));
+            var translate_by = -1 * (window.scrollY * layer.data('depth'));
             layer.css('transform', 'translateY(' + translate_by + 'px)');
         }
     });
 }
 function buildEventDetailsSection() {
-    let details_section = $('#event-details');
-    let details_row = $('<div>').addClass('row');
-    let social_col_div = $('<div>').addClass('event-social-column col-5');
-    let details_div = $('<div>').addClass('venue-time col-5');
-    let social_col = $('<ul>').prop('id', 'social-column');
+    var details_section = $('#event-details');
+    var details_row = $('<div>').addClass('row');
+    var social_col_div = $('<div>').addClass('event-social-column col-5');
+    var details_div = $('<div>').addClass('venue-time col-5');
+    var social_col = $('<ul>').prop('id', 'social-column');
     buildSocialMediaList(social_col);
     social_col.appendTo(social_col_div);
     $('<h1>').addClass('date').text(content.event_details['date']).appendTo(details_div);
@@ -397,7 +418,7 @@ function buildEventDetailsSection() {
  * @param container <uL> Jquery container that contains the social media list
  */
 function buildSocialMediaList(container) {
-    let media_buttons = {
+    var media_buttons = {
         'facebook': $('<a>').prop({
             target: '_blank',
             href: content.social_media['facebook']
@@ -416,18 +437,18 @@ function buildSocialMediaList(container) {
 }
 function buildSpeakersSection() {
     buildSpeakerPhotos('2019');
-    $('#speaker-history-row a').on('click', () => {
+    $('#speaker-history-row a').on('click', function () {
         // Strips 'ICON ' from the link text
-        let year = $('#speaker-history-row').find('a:focus').text().substr(5);
+        var year = $('#speaker-history-row').find('a:focus').text().substr(5);
         buildSpeakerPhotos(year);
     });
 }
 function buildSpeakerPhotos(year) {
     $('#speaker-content-row').html('');
     if (speakers[year].length === 0) {
-        let coming_soon = $('<div>').prop('id', 'coming-soon').addClass('container-fluid text-center');
-        let heading_text = $('<h1>').text('Be the first to know the ICONs of 2019!');
-        let social_row = $('<ul>');
+        var coming_soon = $('<div>').prop('id', 'coming-soon').addClass('container-fluid text-center');
+        var heading_text = $('<h1>').text('Be the first to know the ICONs of 2019!');
+        var social_row = $('<ul>');
         buildSocialMediaList(social_row);
         coming_soon.append(heading_text);
         coming_soon.append(social_row);
@@ -436,11 +457,12 @@ function buildSpeakerPhotos(year) {
     }
     else {
         // $('.speaker-div').css('flex', 100 / speakers[year].length + '%');
-        for (let i = 0; i < speakers[year].length; i++) {
+        console.log(year);
+        for (var i = 0; i < speakers[year].length; i++) {
             // let speaker_container = $('<div>').text(' ').addClass('speaker-div speaker-img' + (i + 1));
-            let speaker_container = $('<div>').text(' ').addClass('speaker-div col-lg speaker-img' + (i + 1));
-            let overlay = $('<div>').addClass('overlay').appendTo(speaker_container);
-            let details = $('<div>').addClass('details').appendTo(overlay);
+            var speaker_container = $('<div>').text(' ').addClass('speaker-div col-lg speaker-img' + (i + 1));
+            var overlay = $('<div>').addClass('overlay').appendTo(speaker_container);
+            var details = $('<div>').addClass('details').appendTo(overlay);
             $('<h1>').text(speakers[year][i].name).appendTo(details);
             $('<h3>').text(speakers[year][i].title).appendTo(details);
             $('<h2>').text(speakers[year][i].organisation).appendTo(details);
@@ -450,11 +472,11 @@ function buildSpeakerPhotos(year) {
     }
 }
 function buildAboutSection() {
-    let about_section = $('#about-section');
-    let about_row = $('<div>').addClass('row');
-    let about_heading = $('<div>').addClass('about-heading col-4');
+    var about_section = $('#about-section');
+    var about_row = $('<div>').addClass('row');
+    var about_heading = $('<div>').addClass('about-heading col-4');
     $('<h1>').text('About ICON').appendTo(about_heading);
-    let about_details = $('<div>').addClass('about-details col-6');
+    var about_details = $('<div>').addClass('about-details col-6');
     $('<p>').text(content.about_section['text']).appendTo(about_details);
     about_row.append(about_heading);
     about_row.append($('<div>').addClass('separator col-auto'));
@@ -462,12 +484,12 @@ function buildAboutSection() {
     about_section.append(about_row);
 }
 function buildCharitySection() {
-    let charity_section = $('#charity-section');
-    let charity_row = $('<div>').addClass('row');
-    let charity_heading = $('<div>').addClass('charity-heading col-4');
+    var charity_section = $('#charity-section');
+    var charity_row = $('<div>').addClass('row');
+    var charity_heading = $('<div>').addClass('charity-heading col-4');
     $('<h1>').text('Our Charity').appendTo(charity_heading);
     $('<h2>').text(content.charity_section['name']).appendTo(charity_heading);
-    let charity_details = $('<div>').addClass('charity-details col-7');
+    var charity_details = $('<div>').addClass('charity-details col-7');
     $('<p>').text(content.charity_section['text']).appendTo(charity_details);
     addButton(content.charity_section['link'], 'Learn More', charity_details);
     charity_row.append(charity_details);
@@ -477,16 +499,17 @@ function buildCharitySection() {
 }
 function buildTeamSection() {
     buildTeamPhotos('Executive');
-    $('#teams-row a').on('click', () => {
+    $('#teams-row a').on('click', function () {
         $('#team-photo-section').html('');
-        let division = $('#teams-row').find('a:focus').text();
+        var division = $('#teams-row').find('a:focus').text();
         buildTeamPhotos(division);
     });
 }
 function buildTeamPhotos(division) {
-    let photoContainer = $('<div>').addClass('d-flex flex-wrap justify-content-center');
-    for (let member of team[division]) {
-        let profile = $('<div class="profile">');
+    var photoContainer = $('<div>').addClass('d-flex flex-wrap justify-content-center');
+    for (var _i = 0, _a = team[division]; _i < _a.length; _i++) {
+        var member = _a[_i];
+        var profile = $('<div class="profile">');
         $('<img>').prop('src', buildImageURL(member)).appendTo(profile);
         $('<h4>').text(member.firstName + ' ' + member.lastName).appendTo(profile);
         $('<h6>').text(member.role).appendTo(profile);
@@ -504,7 +527,7 @@ function buildImageURL(member) {
 }
 /** Randomises the fade in animation time to create a twinkle star fade in effect */
 function attachRandomFadeIn(container) {
-    let delay = Math.random() * 0.2;
+    var delay = Math.random() * 0.2;
     container.css('animation-delay', delay + 's');
     container.addClass('animated fadeIn');
 }
